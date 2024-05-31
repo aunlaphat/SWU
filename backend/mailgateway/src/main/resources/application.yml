@@ -1,0 +1,55 @@
+server:
+  port: 28085
+  servlet:
+    context-path: /mailgateway
+
+application:
+  name: "@project.artifactId@"
+build:
+  version: "@project.version@"
+  timestamp: "@timestamp@"
+
+spring:
+  application:
+    name: mailgateway
+  servlet: 
+    multipart:
+      max-file-size: 5024MB
+      max-request-size: 5024MB
+  datasource:
+    url: jdbc:postgresql://10.11.60.170:30433/swudev
+    username: devuser
+    password: devpassword
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+#Microservice
+  boot:
+    admin:
+      client:
+        url: http://localhost:9011
+        instance:
+          service-base-url: http://localhost:28085
+#MAIL Server
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    encryption: ssl
+    sender:
+      debug: true
+    username: noreply-lifelong@g.swu.ac.th
+    password: krfabowpvibluzid
+    properties:
+      mail: 
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+swu:
+  mail:
+    by: no-reply@swu.ac.th

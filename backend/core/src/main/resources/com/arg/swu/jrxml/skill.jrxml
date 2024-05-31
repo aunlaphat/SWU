@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.5.final using JasperReports Library version 6.0.0  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="skill" pageWidth="390" pageHeight="595" orientation="Landscape" columnWidth="390" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="1" uuid="deb6dcc8-6a0e-4f76-bac9-01b7e43ca080">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="SWU_DEV"/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<style name="header" fontName="Sarabun" fontSize="8">
+		<box topPadding="2" leftPadding="3">
+			<pen lineWidth="0.25"/>
+			<topPen lineWidth="0.5" lineStyle="Solid"/>
+			<leftPen lineWidth="0.0"/>
+			<bottomPen lineWidth="0.5"/>
+			<rightPen lineWidth="0.0" lineStyle="Solid"/>
+		</box>
+		<paragraph lineSpacing="Single"/>
+	</style>
+	<style name="detail" fontName="Sarabun" fontSize="8">
+		<box topPadding="3" leftPadding="3" bottomPadding="1" rightPadding="1">
+			<pen lineWidth="0.25"/>
+			<topPen lineWidth="0.0" lineStyle="Solid"/>
+			<leftPen lineWidth="0.0"/>
+			<bottomPen lineWidth="0.0"/>
+			<rightPen lineWidth="0.0" lineStyle="Solid"/>
+		</box>
+		<paragraph lineSpacing="Single"/>
+	</style>
+	<queryString language="SQL">
+		<![CDATA[select mgs.general_skill_name_th , mgs.general_skill_name_en , cs.skill_level, lc.name_lo ,lc.name_en , 35 as lern_hour_amt from course_skill cs 
+inner join mas_general_skill mgs on cs.general_skill_id = mgs.general_skill_id  
+left join lookup_catalog lc on cs.skill_level = lc.catalog_id 
+limit 100]]>
+	</queryString>
+	<field name="general_skill_name_th" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="general_skill_name_th"/>
+		<property name="com.jaspersoft.studio.field.label" value="general_skill_name_th"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="mas_general_skill"/>
+		<fieldDescription><![CDATA[ชื่อทักษะทั่วไป (ไทย)]]></fieldDescription>
+	</field>
+	<field name="general_skill_name_en" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="general_skill_name_en"/>
+		<property name="com.jaspersoft.studio.field.label" value="general_skill_name_en"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="mas_general_skill"/>
+		<fieldDescription><![CDATA[ชื่อทักษะทั่วไป (อังกฤษ)]]></fieldDescription>
+	</field>
+	<field name="skill_level" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.name" value="skill_level"/>
+		<property name="com.jaspersoft.studio.field.label" value="skill_level"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="course_skill"/>
+		<fieldDescription><![CDATA[ระดับ]]></fieldDescription>
+	</field>
+	<field name="name_lo" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="name_lo"/>
+		<property name="com.jaspersoft.studio.field.label" value="name_lo"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="lookup_catalog"/>
+	</field>
+	<field name="name_en" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="name_en"/>
+		<property name="com.jaspersoft.studio.field.label" value="name_en"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="lookup_catalog"/>
+	</field>
+	<field name="lern_hour_amt" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="lern_hour_amt"/>
+		<property name="com.jaspersoft.studio.field.label" value="lern_hour_amt"/>
+	</field>
+	<background>
+		<band/>
+	</background>
+	<detail>
+		<band height="20">
+			<textField>
+				<reportElement style="detail" x="0" y="0" width="210" height="20" uuid="ab08a033-e32e-4f66-b7fb-e86a208673ad">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="5b0c904a-1a4e-40e9-98f5-3328d63c5476"/>
+				</reportElement>
+				<box leftPadding="5"/>
+				<textElement>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{general_skill_name_th}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="detail" x="210" y="0" width="100" height="20" uuid="5826ee4e-bcf4-44cf-94f6-20238888b0bd">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f455d4fb-c626-4c08-a680-d088f8f4925f"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{name_lo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="detail" x="310" y="0" width="72" height="20" uuid="615b68b1-7dbc-4463-a0cf-bb7b84a60c6d">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="0fa697fe-7798-450c-ac30-f38f19cd059e"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{lern_hour_amt}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

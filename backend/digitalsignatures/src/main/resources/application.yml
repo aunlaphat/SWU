@@ -1,0 +1,71 @@
+server:
+  servlet:
+    context-path: /digitalsignature
+  port: 28084
+
+spring:
+  application:
+    name: digitalsignatures
+  servlet: 
+    multipart:
+      max-file-size: 5024MB
+      max-request-size: 5024MB
+  datasource:
+    url: jdbc:postgresql://10.11.60.170:30433/swudev
+    username: devuser
+    password: devpassword
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+  boot:
+    admin:
+      client:
+        url: http://localhost:9011
+        instance:
+          service-base-url: http://localhost:28084
+
+#EUREKA REGISTER TO SERVER
+# tag::configuration-eureka[]
+eureka:   #<1>
+  instance:
+    leaseRenewalIntervalInSeconds: 10
+    health-check-url-path: /actuator/health
+    metadata-map:
+      startup: ${random.int}    #needed to trigger info and endpoint update after restart
+  client:
+    registryFetchIntervalSeconds: 5
+    serviceUrl:
+      defaultZone: ${EUREKA_SERVICE_URL:http://localhost:9002}/eureka/
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"  #<2>
+  endpoint:
+    health:
+      show-details: ALWAYS
+# end::configuration-eureka[]
+
+# log jdbcTemplate
+logging:
+  level:
+    org:
+      springframework: INFO
+      jdbc:
+        core:
+          JdbcTemplate: DEBUG
+          StatementCreatorUtils: DEBUG
+
+#logging.level.org.springframework.jdbc.core.JdbcAccessor=DEBUG
+
+# Apache ActiveMQ
+activemq:
+  broker:
+    url: tcp://localhost:61616
+  username: admin
+  password: admin

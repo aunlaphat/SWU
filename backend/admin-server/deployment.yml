@@ -1,0 +1,91 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name:  spring-server-admin
+  namespace: default
+  labels:
+    app:  spring-server-admin
+spec:
+  selector:
+    matchLabels:
+      app: spring-server-admin
+  replicas: 1
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app:  spring-server-admin
+    spec:
+      # initContainers:
+        # Init containers are exactly like regular containers, except:
+          # - Init containers always run to completion.
+          # - Each init container must complete successfully before the next one starts.
+      imagePullSecrets:
+      - name: arsoft-private-registry-pull-secret
+      containers:
+      - name:  spring-server-admin
+        image:  hubcpa.ar.co.th:5000/spring-server-admin:0.0.1
+        # env:
+        # - name: spring.datasource.url
+        #   value: "jdbc:postgresql://10.11.60.170:30432/testDB"
+        # - name: spring.datasource.username
+        #   value: "testUser"
+        # - name: spring.datasource.password
+        #   value: "testPassword"
+        # - name: activemq.broker.url
+        #   value: tcp://10.11.60.170:31004
+        # - name: default.path
+        #   value: /var/www/repo/application
+        ports:
+        - containerPort:  9011
+          name:  spring-server
+        volumeMounts:
+        - name: localtime
+          mountPath: /etc/localtime
+        - name: application
+          mountPath: /var/www/repo
+      volumes:
+        - name: localtime
+          hostPath:
+            path: /usr/share/zoneinfo/Asia/Bangkok
+        - name: application
+          hostPath:
+            path: /var/www/repo/application
+          # persistentVolumeClaim:
+          #   claimName: application-persistent-volume-claim
+      restartPolicy: Always
+      nodeSelector:
+        env: sit
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: np-lifelong-spring-server-admin
+  namespace: default
+spec:
+  type: NodePort
+  selector:
+    app: spring-server-admin
+  ports:
+  - port: 9011
+    targetPort: 9011
+    nodePort: 30200
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: spring-server
+  namespace: default
+spec:
+  selector:
+    app: spring-server-admin
+  ports:
+  - name: spring-server
+    protocol: TCP
+    port: 9011
+    targetPort: 9011
+  type: ClusterIP

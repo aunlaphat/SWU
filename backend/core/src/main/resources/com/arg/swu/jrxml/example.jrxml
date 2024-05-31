@@ -1,0 +1,541 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.21.2.final using JasperReports Library version 6.21.2-8434a0bd7c3bbc37cbf916f2968d35e4b165821a  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="example" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="842" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="89475bbf-c14a-49cd-b7db-c2ce103dee90">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="swu_dev"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<style name="logo" fontName="Srinakharinwirot" fontSize="22">
+		<paragraph lineSpacing="Single"/>
+	</style>
+	<style name="header" fontName="Sarabun Light" fontSize="8">
+		<box topPadding="2" leftPadding="3">
+			<pen lineWidth="0.25"/>
+			<topPen lineWidth="0.5" lineStyle="Solid"/>
+			<leftPen lineWidth="0.0"/>
+			<bottomPen lineWidth="0.5"/>
+			<rightPen lineWidth="0.0" lineStyle="Solid"/>
+		</box>
+		<paragraph lineSpacing="Single"/>
+	</style>
+	<style name="detail" fontName="Sarabun Light" fontSize="8">
+		<box topPadding="3" leftPadding="3" bottomPadding="1" rightPadding="1">
+			<pen lineWidth="0.25"/>
+			<topPen lineWidth="0.0" lineStyle="Solid"/>
+			<leftPen lineWidth="0.0"/>
+			<bottomPen lineWidth="0.0"/>
+			<rightPen lineWidth="0.0" lineStyle="Solid"/>
+		</box>
+		<paragraph lineSpacing="Single"/>
+	</style>
+	<parameter name="logo" class="java.lang.Object"/>
+	<parameter name="background" class="java.lang.Object"/>
+	<parameter name="reportCourse" class="net.sf.jasperreports.engine.JasperReport"/>
+	<parameter name="reportSkill" class="net.sf.jasperreports.engine.JasperReport"/>
+	<parameter name="signatureImg" class="java.lang.Object"/>
+	<parameter name="lang" class="java.lang.String"/>
+	<parameter name="backgroundBorder" class="java.lang.Object"/>
+	<queryString>
+		<![CDATA[select a.* , b.* , lc.name_en as skill_level_name_en , lc.name_lo  as skill_level_name_lo, lc."key"  from (
+	select row_number() over() rn,mc.member_id , cm.course_code , cm.course_name_th  ,cm.course_name_en , cpm.course_id, (SELECT string_agg(ss.subject_code_th, ', ')
+	    FROM course_matching cm2 
+	    join swu_subject ss on cm2.subject_swu_id = ss.subject_swu_id and cm2.curriculum_swu_id = ss.curriculum_swu_id and mc.pass_status=true
+	    WHERE cm2.course_id = cpm.course_id) as subject_code_th,
+	    (SELECT string_agg(ss.subject_code_en, ', ')
+	    FROM course_matching cm2 
+	    join swu_subject ss on cm2.subject_swu_id = ss.subject_swu_id and cm2.curriculum_swu_id = ss.curriculum_swu_id and mc.pass_status=true
+	    WHERE cm2.course_id = cpm.course_id) as subject_code_en,
+	    mc.pass_date , cm.course_total_h 
+	from coursepublic_main cpm 
+	join course_main cm on cpm.course_id = cm.course_id 
+	join member_course mc on mc.coursepublic_id = cpm.coursepublic_id 	
+	where mc.member_id = 14
+) 
+a full join 
+(
+	select row_number() over() rn, mgs.general_skill_name_th, mgs.general_skill_name_en, max(cs.skill_level) as skill_level, sum(cm.course_total_h * cs.skill_weight / 100) as total_hour
+	from coursepublic_main cpm 
+	join course_main cm on cpm.course_id = cm.course_id 
+	join member_course mc on mc.coursepublic_id = cpm.coursepublic_id 
+	join course_skill cs on cs.course_id = cm.course_id 
+	left join mas_general_skill mgs on cs.general_skill_id = mgs.general_skill_id
+	where mc.member_id = 14 and cs.course_skill_other_status = false and mgs.active_flag=true and cs.active_flag=true 
+	group by mgs.general_skill_name_th, mgs.general_skill_name_en
+) b on a.rn=b.rn
+left join lookup_catalog lc on b.skill_level = lc.catalog_id
+order by a.rn]]>
+	</queryString>
+	<field name="rn" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.name" value="rn"/>
+		<property name="com.jaspersoft.studio.field.label" value="rn"/>
+	</field>
+	<field name="member_id" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.name" value="member_id"/>
+		<property name="com.jaspersoft.studio.field.label" value="member_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="member_course"/>
+		<fieldDescription><![CDATA[fk member_info.member_id เลขประจำตัวผู้ลงทะเบียนเรียน]]></fieldDescription>
+	</field>
+	<field name="course_code" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="course_code"/>
+		<property name="com.jaspersoft.studio.field.label" value="course_code"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="course_main"/>
+		<fieldDescription><![CDATA[รหัสหลักสูตร]]></fieldDescription>
+	</field>
+	<field name="course_name_th" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="course_name_th"/>
+		<property name="com.jaspersoft.studio.field.label" value="course_name_th"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="course_main"/>
+		<fieldDescription><![CDATA[ชื่อหลักสูตร (ภาษาไทย)]]></fieldDescription>
+	</field>
+	<field name="course_name_en" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="course_name_en"/>
+		<property name="com.jaspersoft.studio.field.label" value="course_name_en"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="course_main"/>
+		<fieldDescription><![CDATA[ชื่อหลักสูตร (ภาษาอังกฤษ)]]></fieldDescription>
+	</field>
+	<field name="course_id" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.name" value="course_id"/>
+		<property name="com.jaspersoft.studio.field.label" value="course_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="coursepublic_main"/>
+		<fieldDescription><![CDATA[FK course_main]]></fieldDescription>
+	</field>
+	<field name="subject_code_th" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="subject_code_th"/>
+		<property name="com.jaspersoft.studio.field.label" value="subject_code_th"/>
+	</field>
+	<field name="subject_code_en" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="subject_code_en"/>
+		<property name="com.jaspersoft.studio.field.label" value="subject_code_en"/>
+	</field>
+	<field name="pass_date" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.name" value="pass_date"/>
+		<property name="com.jaspersoft.studio.field.label" value="pass_date"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="member_course"/>
+	</field>
+	<field name="course_total_h" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="course_total_h"/>
+		<property name="com.jaspersoft.studio.field.label" value="course_total_h"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="course_main"/>
+		<fieldDescription><![CDATA[รวมจำนวนชั่วโมงเรียน]]></fieldDescription>
+	</field>
+	<field name="COLUMN_11" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.name" value="rn"/>
+		<property name="com.jaspersoft.studio.field.label" value="rn"/>
+	</field>
+	<field name="general_skill_name_th" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="general_skill_name_th"/>
+		<property name="com.jaspersoft.studio.field.label" value="general_skill_name_th"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="mas_general_skill"/>
+		<fieldDescription><![CDATA[ชื่อทักษะทั่วไป (ไทย)]]></fieldDescription>
+	</field>
+	<field name="general_skill_name_en" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="general_skill_name_en"/>
+		<property name="com.jaspersoft.studio.field.label" value="general_skill_name_en"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="mas_general_skill"/>
+		<fieldDescription><![CDATA[ชื่อทักษะทั่วไป (อังกฤษ)]]></fieldDescription>
+	</field>
+	<field name="skill_level" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.name" value="skill_level"/>
+		<property name="com.jaspersoft.studio.field.label" value="skill_level"/>
+	</field>
+	<field name="total_hour" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="total_hour"/>
+		<property name="com.jaspersoft.studio.field.label" value="total_hour"/>
+	</field>
+	<field name="skill_level_name_en" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="skill_level_name_en"/>
+		<property name="com.jaspersoft.studio.field.label" value="skill_level_name_en"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="lookup_catalog"/>
+	</field>
+	<field name="skill_level_name_lo" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="skill_level_name_lo"/>
+		<property name="com.jaspersoft.studio.field.label" value="skill_level_name_lo"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="lookup_catalog"/>
+	</field>
+	<field name="key" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="key"/>
+		<property name="com.jaspersoft.studio.field.label" value="key"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="lookup_catalog"/>
+	</field>
+	<group name="memberId">
+		<groupExpression><![CDATA[1]]></groupExpression>
+		<groupFooter>
+			<band height="27">
+				<line>
+					<reportElement x="26" y="0" width="786" height="1" uuid="68b9c96f-e558-4d2a-89fe-c76397745a0d"/>
+					<graphicElement>
+						<pen lineWidth="0.25"/>
+					</graphicElement>
+				</line>
+				<textField>
+					<reportElement x="710" y="8" width="102" height="14" uuid="1cfdc701-2310-4d59-8153-9ea6f57e70c1"/>
+					<textElement textAlignment="Right">
+						<font fontName="Sarabun Light" size="8"/>
+						<paragraph lineSpacing="Single"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Print Date : "]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="351" y="8" width="131" height="14" uuid="720e68f3-278e-4112-beeb-21ddc4445006"/>
+					<textElement textAlignment="Center">
+						<font fontName="Sarabun Light" size="10"/>
+					</textElement>
+					<text><![CDATA[จบรายการแสดงผลการศึกษา]]></text>
+				</staticText>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band height="595">
+			<image>
+				<reportElement x="0" y="0" width="842" height="595" uuid="513eb6a2-c798-4b51-a3e1-40b8362d76ec"/>
+				<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0"/>
+				<imageExpression><![CDATA[$P{backgroundBorder}]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="220" y="110" width="397" height="399" uuid="ec7b236c-90db-439d-b6b4-de9c4b0282ce"/>
+				<imageExpression><![CDATA[$P{background}]]></imageExpression>
+			</image>
+		</band>
+	</background>
+	<pageHeader>
+		<band height="111">
+			<staticText>
+				<reportElement style="logo" x="93" y="30" width="200" height="25" forecolor="#F72A42" uuid="fa6faebd-f75f-4525-9ae9-b8137c4933a7">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left">
+					<font fontName="Srinakharinwirot" size="15"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[มหาวิทยาลัยศรีนครินทรวิโรฒ]]></text>
+			</staticText>
+			<image>
+				<reportElement x="30" y="21" width="60" height="56" uuid="b7ef6412-15b8-49fa-bdc2-04701f7ecc61"/>
+				<imageExpression><![CDATA[$P{logo}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="92" y="55" width="171" height="20" uuid="75d21bdd-28d5-456b-b833-11a36d0cec60"/>
+				<textElement textAlignment="Center">
+					<font fontName="Sarabun Light" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[114 สุขุมวิท 23 กรุงเทพมหานคร 10110]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="detail" x="25" y="83" width="165" height="22" uuid="3335fff7-86cb-4fb0-8053-b25ed9832816">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Sarabun Light"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[ชื่อ-นามสกุล : ธนาวุฒิ อาจกิจโกศล]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="detail" x="190" y="83" width="194" height="22" uuid="02609111-2ffb-47eb-9186-d90a53e122ef"/>
+				<textElement>
+					<font fontName="Sarabun Light"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Account : smileswu@gmail.com]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="detail" x="384" y="83" width="224" height="22" uuid="d00b672c-56a8-43a1-8832-c7e9e3cc6d16"/>
+				<textElement>
+					<font fontName="Sarabun Light"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Learner ID : 12345678901111]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="logo" x="609" y="21" width="204" height="25" forecolor="#F72A42" uuid="33c78648-3c57-4390-b9cc-c9917b9b90c6"/>
+				<textElement textAlignment="Right" verticalAlignment="Top">
+					<font fontName="Srinakharinwirot" size="12"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Experlence Transcript]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="detail" x="694" y="83" width="88" height="22" uuid="bfb1672b-a832-4242-b7be-a63c17e4e2a8"/>
+				<textElement textAlignment="Right">
+					<font fontName="Sarabun Light" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER} + " of "]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement style="detail" x="784" y="83" width="28" height="22" uuid="55550a49-5d04-47df-9d16-5e4e55507e2b"/>
+				<textElement>
+					<font fontName="Sarabun Light" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="20">
+			<staticText>
+				<reportElement style="header" x="26" y="0" width="60" height="20" uuid="bdce4e10-00c2-45ee-a195-9cb343ee8eb7">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ccb3a88a-1062-4305-b3fb-7136d7d049c2"/>
+				</reportElement>
+				<box>
+					<leftPen lineWidth="0.25"/>
+				</box>
+				<textElement>
+					<font fontName="Sarabun Light"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[รหัสคอร์ส]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="header" x="86" y="0" width="119" height="20" uuid="4208348d-2c50-4a5b-8f59-aa7deceed440">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="cdf7b0f3-d570-47e9-a92c-eae0cc2054ae"/>
+				</reportElement>
+				<textElement>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[ชื่อคอร์ส]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="header" x="205" y="0" width="95" height="20" uuid="81b2d788-b4e4-4120-a7ad-732050cc2881">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b58764af-8b50-464c-9381-dc0db6796930"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[เทียบเคียงวิชา]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="header" x="300" y="0" width="58" height="20" uuid="447a70ce-7803-4200-ba77-3e8783dcef0d">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="cc6c8ef7-68d5-4fbf-b48d-2481bc0fe082"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[วันที่เรียนจบ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="header" x="358" y="0" width="58" height="20" uuid="774e5f9c-d5f7-4861-89cb-cd899b84a1b9">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="e62d01fa-7cf8-4417-bc24-124e824a0f03"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[ชัวโมงเรียน]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="header" x="416" y="0" width="193" height="20" uuid="a78c14ee-601e-4b68-925c-71ea69e737ba">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="5b0c904a-1a4e-40e9-98f5-3328d63c5476"/>
+				</reportElement>
+				<box leftPadding="5"/>
+				<textElement>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[ทักษะการเรียนรู้ที่ได้รับ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="header" x="610" y="0" width="128" height="20" uuid="9f74a475-fa68-461e-ba28-b9b2e166d896">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f455d4fb-c626-4c08-a680-d088f8f4925f"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[ระดับของทักษะ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="header" x="738" y="0" width="73" height="20" uuid="6f6117e7-ae62-423c-91cb-690971642d47">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="0fa697fe-7798-450c-ac30-f38f19cd059e"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[จำนวนชั่วโมง]]></text>
+			</staticText>
+			<line>
+				<reportElement stretchType="RelativeToBandHeight" x="416" y="0" width="1" height="20" isPrintWhenDetailOverflows="true" uuid="c7ec1726-9e35-4d09-a502-9be436d197f5"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement stretchType="RelativeToBandHeight" x="811" y="0" width="1" height="20" isPrintWhenDetailOverflows="true" uuid="150246f9-eb00-48a7-8087-163b266c7f6e"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="19" splitType="Immediate">
+			<line>
+				<reportElement stretchType="ElementGroupHeight" x="26" y="0" width="1" height="19" uuid="dd57d17d-c61c-44d9-bb1f-1e9318f94a74"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement stretchType="RelativeToBandHeight" x="811" y="0" width="1" height="19" isPrintWhenDetailOverflows="true" uuid="57c4b390-4ea3-4d12-8ecf-6e6457171725"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement stretchType="RelativeToBandHeight" x="416" y="0" width="1" height="19" isPrintWhenDetailOverflows="true" uuid="c65dc9d5-4019-49ef-b789-d64db3c652da"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+				<reportElement style="detail" stretchType="RelativeToBandHeight" x="26" y="0" width="60" height="19" isPrintWhenDetailOverflows="true" uuid="801d6dd5-b691-41b4-89f8-009682351eb2">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="1d573c15-9632-4908-b175-bae82a41a6d8"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{course_code}]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+				<reportElement style="detail" stretchType="RelativeToTallestObject" x="86" y="0" width="119" height="19" isPrintWhenDetailOverflows="true" uuid="938d8a3e-75c4-4072-861c-db88846daa22">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ae430584-1046-41f6-8d82-57539e1d1be8"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$P{lang}.equals( new String("th") )?$F{course_name_th}:$F{course_name_en}]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+				<reportElement style="detail" stretchType="RelativeToTallestObject" x="205" y="0" width="95" height="19" isPrintWhenDetailOverflows="true" uuid="55e0cd09-2326-4397-b024-277968ccd157">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="654ddf1d-a618-43fe-83c2-316581b417c9"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{subject_code_th}]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+				<reportElement style="detail" stretchType="RelativeToBandHeight" x="300" y="0" width="58" height="19" isPrintWhenDetailOverflows="true" uuid="db253bcb-22b6-4562-929d-a3bdfe410991">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c19750f7-6b17-45db-9633-79364140046b"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{pass_date}]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight" pattern="#,##0.###;#,##0.###-" isBlankWhenNull="true">
+				<reportElement style="detail" stretchType="RelativeToBandHeight" x="358" y="0" width="58" height="19" isPrintWhenDetailOverflows="true" uuid="7f7cc1ca-6f25-4a10-b3cf-79b6e7f3d6c4">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="deb8c4d2-876b-4abc-a806-ea8c7654f360"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{course_total_h}]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+				<reportElement style="detail" stretchType="RelativeToBandHeight" x="417" y="0" width="192" height="19" isPrintWhenDetailOverflows="true" uuid="e66cfabb-d7bb-4cf0-af30-8e3c7630d3bc">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="0ee42da7-71b1-486d-afd1-70eb3f7bdab9"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{general_skill_name_th}]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight" pattern="#,##0.00#;#,##0.00#-" isBlankWhenNull="true">
+				<reportElement style="detail" stretchType="RelativeToBandHeight" x="738" y="0" width="74" height="19" isPrintWhenDetailOverflows="true" uuid="ea657a5e-6998-45bb-bdca-01fae2ed1344">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="e2387aba-1a30-4fb1-a543-4e09433a282d"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{total_hour}]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+				<reportElement style="detail" stretchType="RelativeToBandHeight" x="610" y="0" width="128" height="19" isPrintWhenDetailOverflows="true" uuid="7a6719cb-acc0-4b9b-baf5-4b8e8ee1054f">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="881bb37b-3009-4b72-9e27-b7fc5887c6b7"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{skill_level_name_lo}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="8"/>
+	</pageFooter>
+	<lastPageFooter>
+		<band height="122" splitType="Stretch">
+			<componentElement>
+				<reportElement x="27" y="0" width="120" height="99" uuid="d4747787-8543-47e9-abc1-af8d6acffb10"/>
+				<jr:QRCode xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<jr:codeExpression><![CDATA["https://www.sanook.com"]]></jr:codeExpression>
+				</jr:QRCode>
+			</componentElement>
+			<line>
+				<reportElement x="189" y="86" width="429" height="1" uuid="d4df8a00-0597-4c5e-93e3-01246fffe933"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="190" y="55" width="428" height="1" uuid="9b51e172-3107-4ed5-85aa-d24c92d61af6"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement stretchType="RelativeToBandHeight" x="189" y="55" width="1" height="31" isPrintWhenDetailOverflows="true" uuid="e377b1a3-4080-48fb-a7e6-7a115409a8ea"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement stretchType="RelativeToBandHeight" x="309" y="55" width="1" height="31" isPrintWhenDetailOverflows="true" uuid="821b9cf0-0cb1-41c2-bbcd-33c1802dc01f"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement stretchType="RelativeToBandHeight" x="479" y="55" width="1" height="31" isPrintWhenDetailOverflows="true" uuid="6ce91921-7294-4a6d-8145-e44271ff66f6"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement stretchType="RelativeToBandHeight" x="618" y="55" width="1" height="31" isPrintWhenDetailOverflows="true" uuid="87642593-ef6d-41fa-a924-8837817e8ad2"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="199" y="64" width="100" height="14" uuid="4b99dcd9-4cdc-4739-ae44-9922e70d3166"/>
+				<textElement textAlignment="Center">
+					<font fontName="Sarabun Light" size="10"/>
+				</textElement>
+				<text><![CDATA[คอร์สเรียนทั้งหมด : 4]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="349" y="64" width="100" height="14" uuid="68117890-af80-4c6e-803e-12a66ede29e9"/>
+				<textElement textAlignment="Center">
+					<font fontName="Sarabun Light" size="10"/>
+				</textElement>
+				<text><![CDATA[เที่ยบเคียงรายวิชา : 7]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="499" y="64" width="100" height="14" uuid="0b10e3dd-c30d-4f6e-aaf7-d581348f311d"/>
+				<textElement textAlignment="Center">
+					<font fontName="Sarabun Light" size="10"/>
+				</textElement>
+				<text><![CDATA[สะสมหน่วยกิจ : 10]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="649" y="57" width="152" height="14" uuid="613b3822-95c5-43aa-87d5-80cf4ee9b442"/>
+				<textElement textAlignment="Center">
+					<font fontName="Sarabun Light" size="10"/>
+				</textElement>
+				<text><![CDATA[รองศาสตราจารย์ ดร.มนตรี มีสุข]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="649" y="72" width="152" height="14" uuid="0237d0a1-9dcb-4050-bd29-7629c23e3ba3"/>
+				<textElement textAlignment="Center">
+					<font fontName="Sarabun Light" size="10"/>
+				</textElement>
+				<text><![CDATA[คณบดีบัณฑิตวิทยาลัย]]></text>
+			</staticText>
+			<image>
+				<reportElement x="669" y="17" width="125" height="41" uuid="e92cb75c-4e93-414f-b38e-b48203f5555e"/>
+				<imageExpression><![CDATA[$P{signatureImg}]]></imageExpression>
+			</image>
+		</band>
+	</lastPageFooter>
+</jasperReport>

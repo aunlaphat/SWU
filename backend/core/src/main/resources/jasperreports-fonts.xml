@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+
+<!--
+
+    $Id: jasperreports-fonts.xml,v 1.1 2011/01/31 12:46:32 thanasit Exp $
+
+
+
+    Copyright 2010 (C) Advanced Research Group Co., Ltd. (ARG).
+
+    All Rights Researved.
+
+-->
+
+
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+
+    http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+
+
+
+    <bean id="cordiaNew" class="net.sf.jasperreports.engine.fonts.SimpleFontFamily">
+        <property name="name" value="Cordia New"/>
+        <property name="normal" value="fonts/CORDIA.ttf"/>
+        <property name="bold" value="fonts/CordiaNewBold.ttf"/>
+        <property name="italic" value="fonts/cordiai.ttf"/>
+        <property name="boldItalic" value="fonts/CordiaNewBoldItalic.ttf"/>
+        <property name="pdfEncoding" value="Identity-H"/>
+        <property name="pdfEmbedded" value="true"/>
+    </bean>
+
+    <bean id="angsanaNewFamily" class="net.sf.jasperreports.engine.fonts.SimpleFontFamily">
+        <property name="name" value="Angsana New"/>
+        <property name="normal" value="fonts/angsa.ttf"/>
+        <property name="bold" value="fonts/angsab.ttf"/>
+        <property name="italic" value="fonts/angsai.ttf"/>
+        <property name="boldItalic" value="fonts/angsaz.ttf"/>
+        <property name="pdfEncoding" value="Identity-H"/>
+        <property name="pdfEmbedded" value="true"/>
+    </bean>
+
+    <bean id="tahomaFamily" class="net.sf.jasperreports.engine.fonts.SimpleFontFamily">
+        <property name="name" value="Tahoma"/>
+        <property name="normal" value="fonts/tahoma.ttf"/>
+        <property name="bold" value="fonts/tahomabd.ttf"/>
+        <property name="pdfEncoding" value="Identity-H"/>
+        <property name="pdfEmbedded" value="true"/>
+    </bean>
+    
+    <bean id="thSarabunNew" class="net.sf.jasperreports.engine.fonts.SimpleFontFamily">
+        <property name="name" value="TH Sarabun New"/>
+        <property name="normal" value="fonts/THSarabunNew.ttf"/>
+        <property name="bold" value="fonts/THSarabunNew Bold.ttf"/>
+        <property name="italic" value="fonts/THSarabunNew Italic.ttf"/>
+        <property name="boldItalic" value="fonts/THSarabunNew BoldItalic.ttf"/>
+        <property name="pdfEncoding" value="Identity-H"/>
+        <property name="pdfEmbedded" value="true"/>
+    </bean>
+     
+
+
+
+</beans>
+

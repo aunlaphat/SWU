@@ -1,0 +1,5 @@
+server:
+  port: 9011
+logging:
+  file:
+    name: /Users/niwatroongroj/DocMy/Project/microservice/spring-admin-server/src/admin-server.log

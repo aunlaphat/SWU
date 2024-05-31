@@ -1,0 +1,5 @@
+2024-02-28T13:11:28.322+07:00  INFO 21261 --- [main] c.a.s.SpringAdminServerApplicationTests  : Starting SpringAdminServerApplicationTests using Java 17.0.1 with PID 21261 (started by niwatroongroj in /Users/niwatroongroj/DocMy/Project/microservice/spring-admin-server)
+2024-02-28T13:11:28.325+07:00  INFO 21261 --- [main] c.a.s.SpringAdminServerApplicationTests  : No active profile set, falling back to 1 default profile: "default"
+2024-02-28T13:11:29.817+07:00  WARN 21261 --- [main] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2024-02-28T13:11:30.016+07:00  INFO 21261 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
+2024-02-28T13:11:31.179+07:00  INFO 21261 --- [main] c.a.s.SpringAdminServerApplicationTests  : Started SpringAdminServerApplicationTests in 3.2 seconds (process running for 4.227)

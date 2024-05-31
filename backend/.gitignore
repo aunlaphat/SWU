@@ -1,0 +1,6 @@
+.idea/
+core/.mvn/
+operation-api/.mvn/
+student-api/.mvn/
+.settings/
+.project

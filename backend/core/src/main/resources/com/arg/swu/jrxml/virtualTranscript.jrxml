@@ -1,0 +1,874 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.21.2.final using JasperReports Library version 6.21.2-8434a0bd7c3bbc37cbf916f2968d35e4b165821a  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="virtualTranscript" pageWidth="842" pageHeight="595" orientation="Landscape" whenNoDataType="NoDataSection" columnWidth="842" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="89475bbf-c14a-49cd-b7db-c2ce103dee90">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="swu_dev"/>
+	<style name="logo" fontName="Srinakharinwirot" fontSize="22">
+		<paragraph lineSpacing="Single"/>
+	</style>
+	<style name="header" fontName="Sarabun Light" fontSize="8">
+		<box topPadding="2" leftPadding="3">
+			<pen lineWidth="0.25"/>
+			<topPen lineWidth="0.5" lineStyle="Solid"/>
+			<leftPen lineWidth="0.0"/>
+			<bottomPen lineWidth="0.5"/>
+			<rightPen lineWidth="0.0" lineStyle="Solid"/>
+		</box>
+		<paragraph lineSpacing="Single"/>
+	</style>
+	<style name="detail" fontName="Sarabun Light" fontSize="8">
+		<box topPadding="3" leftPadding="3" bottomPadding="1" rightPadding="1">
+			<pen lineWidth="0.25"/>
+			<topPen lineWidth="0.0" lineStyle="Solid"/>
+			<leftPen lineWidth="0.0"/>
+			<bottomPen lineWidth="0.0"/>
+			<rightPen lineWidth="0.0" lineStyle="Solid"/>
+		</box>
+		<paragraph lineSpacing="Single"/>
+	</style>
+	<style name="Table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="setFrontend" uuid="e9fcd486-a4b6-41eb-9498-0b2aa737cbd1">
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="swu_dev"/>
+		<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+		<queryString>
+			<![CDATA[select * from set_frontend]]>
+		</queryString>
+		<field name="set_id" class="java.lang.Long">
+			<property name="com.jaspersoft.studio.field.name" value="set_id"/>
+			<property name="com.jaspersoft.studio.field.label" value="set_id"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="set_frontend"/>
+		</field>
+		<field name="logo_header_path" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="logo_header_path"/>
+			<property name="com.jaspersoft.studio.field.label" value="logo_header_path"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="set_frontend"/>
+		</field>
+		<field name="title" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="title"/>
+			<property name="com.jaspersoft.studio.field.label" value="title"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="set_frontend"/>
+		</field>
+		<field name="meta_description" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="meta_description"/>
+			<property name="com.jaspersoft.studio.field.label" value="meta_description"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="set_frontend"/>
+		</field>
+		<field name="logo_footer_path" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="logo_footer_path"/>
+			<property name="com.jaspersoft.studio.field.label" value="logo_footer_path"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="set_frontend"/>
+		</field>
+		<field name="facebook_path" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="facebook_path"/>
+			<property name="com.jaspersoft.studio.field.label" value="facebook_path"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="set_frontend"/>
+		</field>
+		<field name="line_path" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="line_path"/>
+			<property name="com.jaspersoft.studio.field.label" value="line_path"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="set_frontend"/>
+		</field>
+		<field name="x_path" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="x_path"/>
+			<property name="com.jaspersoft.studio.field.label" value="x_path"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="set_frontend"/>
+		</field>
+		<field name="ig_path" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="ig_path"/>
+			<property name="com.jaspersoft.studio.field.label" value="ig_path"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="set_frontend"/>
+		</field>
+		<field name="youtube_path" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="youtube_path"/>
+			<property name="com.jaspersoft.studio.field.label" value="youtube_path"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="set_frontend"/>
+		</field>
+		<field name="contact_address" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="contact_address"/>
+			<property name="com.jaspersoft.studio.field.label" value="contact_address"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="set_frontend"/>
+		</field>
+		<field name="contact_email" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="contact_email"/>
+			<property name="com.jaspersoft.studio.field.label" value="contact_email"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="set_frontend"/>
+		</field>
+		<field name="contact_tel" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="contact_tel"/>
+			<property name="com.jaspersoft.studio.field.label" value="contact_tel"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="set_frontend"/>
+		</field>
+		<field name="create_date" class="java.sql.Timestamp">
+			<property name="com.jaspersoft.studio.field.name" value="create_date"/>
+			<property name="com.jaspersoft.studio.field.label" value="create_date"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="set_frontend"/>
+		</field>
+		<field name="create_by_id" class="java.lang.Long">
+			<property name="com.jaspersoft.studio.field.name" value="create_by_id"/>
+			<property name="com.jaspersoft.studio.field.label" value="create_by_id"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="set_frontend"/>
+		</field>
+		<field name="update_date" class="java.sql.Timestamp">
+			<property name="com.jaspersoft.studio.field.name" value="update_date"/>
+			<property name="com.jaspersoft.studio.field.label" value="update_date"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="set_frontend"/>
+		</field>
+		<field name="update_by_id" class="java.lang.Long">
+			<property name="com.jaspersoft.studio.field.name" value="update_by_id"/>
+			<property name="com.jaspersoft.studio.field.label" value="update_by_id"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="set_frontend"/>
+		</field>
+		<field name="active_flag" class="java.lang.Boolean">
+			<property name="com.jaspersoft.studio.field.name" value="active_flag"/>
+			<property name="com.jaspersoft.studio.field.label" value="active_flag"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="set_frontend"/>
+		</field>
+		<field name="website" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="website"/>
+			<property name="com.jaspersoft.studio.field.label" value="website"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="set_frontend"/>
+		</field>
+		<field name="virtual_transcript_sign_path" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="virtual_transcript_sign_path"/>
+			<property name="com.jaspersoft.studio.field.label" value="virtual_transcript_sign_path"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="set_frontend"/>
+		</field>
+	</subDataset>
+	<subDataset name="memberInfo" uuid="88dbb27c-2cf0-4135-bff1-85aa58a2de2d">
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="swu_dev"/>
+		<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+		<parameter name="memberId" class="java.lang.Long"/>
+		<parameter name="lang" class="java.lang.String"/>
+		<queryString>
+			<![CDATA[SELECT
+  mi.member_id,
+  mi.member_firstname_th,
+  mi.member_lastname_th,
+  mi.member_firstname_en,
+  mi.member_lastname_en,
+  mi.member_email,
+  cm.course_code,
+  cm.course_name_th,
+  cm.course_name_en,
+  cpm.course_id,
+  cpm.course_public_start,
+  mc.pass_date,
+  cm.credit_amount,
+  mc.result_grade,
+  mc.member_course_id,
+  SUM(cm.credit_amount) AS total_credit,
+  STRING_AGG(CONCAT(ss.subject_code_th, ' ', ss.subject_name_th), ', ') AS subject_code_th,
+  STRING_AGG(CONCAT(ss.subject_code_en, ' ', ss.subject_name_en), ', ') AS subject_code_en
+FROM member_info mi
+JOIN member_course mc ON mi.member_id = mc.member_id
+JOIN coursepublic_main cpm ON mc.coursepublic_id = cpm.coursepublic_id
+JOIN course_main cm ON cpm.course_id = cm.course_id
+LEFT JOIN course_matching cm2 ON cm.course_id = cm2.course_id
+LEFT JOIN swu_subject ss ON cm2.subject_swu_id = ss.subject_swu_id AND cm2.curriculum_swu_id = ss.curriculum_swu_id
+WHERE mi.member_id = 14
+GROUP BY mi.member_id, mi.member_firstname_th, mi.member_lastname_th, mi.member_firstname_en, mi.member_lastname_en, mi.member_email, cm.course_code, cm.course_name_th, cm.course_name_en, cpm.course_id, cpm.course_public_start, mc.pass_date, cm.credit_amount, mc.result_grade, mc.member_course_id]]>
+		</queryString>
+		<field name="member_id" class="java.lang.Long">
+			<property name="com.jaspersoft.studio.field.name" value="member_id"/>
+			<property name="com.jaspersoft.studio.field.label" value="member_id"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="member_info"/>
+			<fieldDescription><![CDATA[PK]]></fieldDescription>
+		</field>
+		<field name="member_firstname_th" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="member_firstname_th"/>
+			<property name="com.jaspersoft.studio.field.label" value="member_firstname_th"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="member_info"/>
+			<fieldDescription><![CDATA[ชื่อ (ไทย)]]></fieldDescription>
+		</field>
+		<field name="member_lastname_th" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="member_lastname_th"/>
+			<property name="com.jaspersoft.studio.field.label" value="member_lastname_th"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="member_info"/>
+			<fieldDescription><![CDATA[นามสกุล (ไทย)]]></fieldDescription>
+		</field>
+		<field name="member_firstname_en" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="member_firstname_en"/>
+			<property name="com.jaspersoft.studio.field.label" value="member_firstname_en"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="member_info"/>
+			<fieldDescription><![CDATA[ชื่อ (อังกฤษ)]]></fieldDescription>
+		</field>
+		<field name="member_lastname_en" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="member_lastname_en"/>
+			<property name="com.jaspersoft.studio.field.label" value="member_lastname_en"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="member_info"/>
+			<fieldDescription><![CDATA[นามสกุล (อังกฤษ)]]></fieldDescription>
+		</field>
+		<field name="member_email" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="member_email"/>
+			<property name="com.jaspersoft.studio.field.label" value="member_email"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="member_info"/>
+			<fieldDescription><![CDATA[อีเมล]]></fieldDescription>
+		</field>
+		<field name="course_code" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="course_code"/>
+			<property name="com.jaspersoft.studio.field.label" value="course_code"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="course_main"/>
+			<fieldDescription><![CDATA[รหัสหลักสูตร]]></fieldDescription>
+		</field>
+		<field name="course_name_th" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="course_name_th"/>
+			<property name="com.jaspersoft.studio.field.label" value="course_name_th"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="course_main"/>
+			<fieldDescription><![CDATA[ชื่อหลักสูตร (ภาษาไทย)]]></fieldDescription>
+		</field>
+		<field name="course_name_en" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="course_name_en"/>
+			<property name="com.jaspersoft.studio.field.label" value="course_name_en"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="course_main"/>
+			<fieldDescription><![CDATA[ชื่อหลักสูตร (ภาษาอังกฤษ)]]></fieldDescription>
+		</field>
+		<field name="course_id" class="java.lang.Long">
+			<property name="com.jaspersoft.studio.field.name" value="course_id"/>
+			<property name="com.jaspersoft.studio.field.label" value="course_id"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="coursepublic_main"/>
+			<fieldDescription><![CDATA[FK course_main]]></fieldDescription>
+		</field>
+		<field name="course_public_start" class="java.sql.Timestamp">
+			<property name="com.jaspersoft.studio.field.name" value="course_public_start"/>
+			<property name="com.jaspersoft.studio.field.label" value="course_public_start"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="coursepublic_main"/>
+			<fieldDescription><![CDATA[วันที่โปรโมทเริ่มต้น]]></fieldDescription>
+		</field>
+		<field name="pass_date" class="java.sql.Timestamp">
+			<property name="com.jaspersoft.studio.field.name" value="pass_date"/>
+			<property name="com.jaspersoft.studio.field.label" value="pass_date"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="member_course"/>
+		</field>
+		<field name="credit_amount" class="java.math.BigDecimal">
+			<property name="com.jaspersoft.studio.field.name" value="credit_amount"/>
+			<property name="com.jaspersoft.studio.field.label" value="credit_amount"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="course_main"/>
+			<fieldDescription><![CDATA[จำนวนหน่วยกิต]]></fieldDescription>
+		</field>
+		<field name="result_grade" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="result_grade"/>
+			<property name="com.jaspersoft.studio.field.label" value="result_grade"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="member_course"/>
+			<fieldDescription><![CDATA[เกรด]]></fieldDescription>
+		</field>
+		<field name="member_course_id" class="java.lang.Long">
+			<property name="com.jaspersoft.studio.field.name" value="member_course_id"/>
+			<property name="com.jaspersoft.studio.field.label" value="member_course_id"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="member_course"/>
+			<fieldDescription><![CDATA[PK]]></fieldDescription>
+		</field>
+		<field name="total_credit" class="java.math.BigDecimal">
+			<property name="com.jaspersoft.studio.field.name" value="total_credit"/>
+			<property name="com.jaspersoft.studio.field.label" value="total_credit"/>
+		</field>
+		<field name="subject_code_th" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="subject_code_th"/>
+			<property name="com.jaspersoft.studio.field.label" value="subject_code_th"/>
+		</field>
+		<field name="subject_code_en" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="subject_code_en"/>
+			<property name="com.jaspersoft.studio.field.label" value="subject_code_en"/>
+		</field>
+	</subDataset>
+	<parameter name="logo" class="java.lang.Object"/>
+	<parameter name="background" class="java.lang.Object"/>
+	<parameter name="reportCourse" class="net.sf.jasperreports.engine.JasperReport"/>
+	<parameter name="reportSkill" class="net.sf.jasperreports.engine.JasperReport"/>
+	<parameter name="signatureImg" class="java.lang.Object"/>
+	<parameter name="lang" class="java.lang.String"/>
+	<parameter name="memberId" class="java.lang.Long"/>
+	<parameter name="backgroundBorder" class="java.lang.Object"/>
+	<parameter name="qrcode" class="java.lang.String"/>
+	<parameter name="dateFormat" class="java.lang.String"/>
+	<parameter name="startDate" class="java.lang.String"/>
+	<parameter name="passDate" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[select cm.course_code , cm.course_name_th  ,cm.course_name_en , cpm.course_id, mi.member_id, mi.member_no , mi.credit_bank,(SELECT string_agg(concat(ss.subject_code_th,'-', ss.subject_set,' ', ss.subject_name_th), ', ')
+    FROM course_matching cm2 
+    join swu_subject ss on cm2.subject_swu_id = ss.subject_swu_id and cm2.curriculum_swu_id = ss.curriculum_swu_id
+    WHERE cm2.course_id = cpm.course_id) as subject_code_th,
+    (SELECT string_agg(concat(ss.subject_code_en,'-', ss.subject_set, ' ', ss.subject_name_en), ', ')
+    FROM course_matching cm2 
+    join swu_subject ss on cm2.subject_swu_id = ss.subject_swu_id and cm2.curriculum_swu_id = ss.curriculum_swu_id
+    WHERE cm2.course_id = cpm.course_id) as subject_code_en,
+    cpm.course_class_start, mc.pass_date, cm.credit_amount , mc.result_grade, mc.member_course_id, sum(cm.credit_amount) as total_credit, mi.member_firstname_th, 
+    mi.member_lastname_th, mi.member_firstname_en, mi.member_lastname_en, mi.member_email
+from coursepublic_main cpm 
+join course_main cm on cpm.course_id = cm.course_id 
+join member_course mc on mc.coursepublic_id = cpm.coursepublic_id 
+join member_info mi on mc.member_id = mi.member_id 
+where mc.member_id = $P{memberId} and mc.pass_status=true and exists(select * from course_matching cm3 where cm3.course_id=cm.course_id)
+group by cm.course_code , cm.course_name_th  ,cm.course_name_en , cpm.course_id, subject_code_th, subject_code_en, cpm.course_class_start, mc.pass_date , cm.credit_amount , 
+mc.result_grade, mc.member_course_id, mi.member_firstname_th, mi.member_lastname_th, mi.member_firstname_en, mi.member_lastname_en, mi.member_email, mi.member_id, mi.credit_bank]]>
+	</queryString>
+	<field name="course_code" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="course_code"/>
+		<property name="com.jaspersoft.studio.field.label" value="course_code"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="course_main"/>
+		<fieldDescription><![CDATA[รหัสหลักสูตร]]></fieldDescription>
+	</field>
+	<field name="course_name_th" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="course_name_th"/>
+		<property name="com.jaspersoft.studio.field.label" value="course_name_th"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="course_main"/>
+		<fieldDescription><![CDATA[ชื่อหลักสูตร (ภาษาไทย)]]></fieldDescription>
+	</field>
+	<field name="course_name_en" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="course_name_en"/>
+		<property name="com.jaspersoft.studio.field.label" value="course_name_en"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="course_main"/>
+		<fieldDescription><![CDATA[ชื่อหลักสูตร (ภาษาอังกฤษ)]]></fieldDescription>
+	</field>
+	<field name="course_id" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.name" value="course_id"/>
+		<property name="com.jaspersoft.studio.field.label" value="course_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="coursepublic_main"/>
+		<fieldDescription><![CDATA[FK course_main]]></fieldDescription>
+	</field>
+	<field name="member_id" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.name" value="member_id"/>
+		<property name="com.jaspersoft.studio.field.label" value="member_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="member_info"/>
+		<fieldDescription><![CDATA[PK]]></fieldDescription>
+	</field>
+	<field name="member_no" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="member_no"/>
+		<property name="com.jaspersoft.studio.field.label" value="member_no"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="member_info"/>
+	</field>
+	<field name="credit_bank" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.name" value="credit_bank"/>
+		<property name="com.jaspersoft.studio.field.label" value="credit_bank"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="member_info"/>
+		<fieldDescription><![CDATA[จำนวนหน่วยกิตที่สะสมแล้ว]]></fieldDescription>
+	</field>
+	<field name="subject_code_th" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="subject_code_th"/>
+		<property name="com.jaspersoft.studio.field.label" value="subject_code_th"/>
+	</field>
+	<field name="subject_code_en" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="subject_code_en"/>
+		<property name="com.jaspersoft.studio.field.label" value="subject_code_en"/>
+	</field>
+	<field name="course_class_start" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.name" value="course_class_start"/>
+		<property name="com.jaspersoft.studio.field.label" value="course_class_start"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="coursepublic_main"/>
+		<fieldDescription><![CDATA[วันที่เรียนเริ่มต้น]]></fieldDescription>
+	</field>
+	<field name="pass_date" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.name" value="pass_date"/>
+		<property name="com.jaspersoft.studio.field.label" value="pass_date"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="member_course"/>
+		<fieldDescription><![CDATA[วันที่บันทึกเกรด ผ่านหลักสูตร]]></fieldDescription>
+	</field>
+	<field name="credit_amount" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="credit_amount"/>
+		<property name="com.jaspersoft.studio.field.label" value="credit_amount"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="course_main"/>
+		<fieldDescription><![CDATA[จำนวนหน่วยกิต]]></fieldDescription>
+	</field>
+	<field name="result_grade" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="result_grade"/>
+		<property name="com.jaspersoft.studio.field.label" value="result_grade"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="member_course"/>
+		<fieldDescription><![CDATA[เกรด]]></fieldDescription>
+	</field>
+	<field name="member_course_id" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.name" value="member_course_id"/>
+		<property name="com.jaspersoft.studio.field.label" value="member_course_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="member_course"/>
+		<fieldDescription><![CDATA[PK]]></fieldDescription>
+	</field>
+	<field name="total_credit" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="total_credit"/>
+		<property name="com.jaspersoft.studio.field.label" value="total_credit"/>
+	</field>
+	<field name="member_firstname_th" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="member_firstname_th"/>
+		<property name="com.jaspersoft.studio.field.label" value="member_firstname_th"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="member_info"/>
+		<fieldDescription><![CDATA[ชื่อ (ไทย)]]></fieldDescription>
+	</field>
+	<field name="member_lastname_th" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="member_lastname_th"/>
+		<property name="com.jaspersoft.studio.field.label" value="member_lastname_th"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="member_info"/>
+		<fieldDescription><![CDATA[นามสกุล (ไทย)]]></fieldDescription>
+	</field>
+	<field name="member_firstname_en" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="member_firstname_en"/>
+		<property name="com.jaspersoft.studio.field.label" value="member_firstname_en"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="member_info"/>
+		<fieldDescription><![CDATA[ชื่อ (อังกฤษ)]]></fieldDescription>
+	</field>
+	<field name="member_lastname_en" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="member_lastname_en"/>
+		<property name="com.jaspersoft.studio.field.label" value="member_lastname_en"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="member_info"/>
+		<fieldDescription><![CDATA[นามสกุล (อังกฤษ)]]></fieldDescription>
+	</field>
+	<field name="member_email" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="member_email"/>
+		<property name="com.jaspersoft.studio.field.label" value="member_email"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="member_info"/>
+		<fieldDescription><![CDATA[อีเมล]]></fieldDescription>
+	</field>
+	<variable name="course_id1" class="java.lang.Integer" resetType="Page" calculation="Count">
+		<variableExpression><![CDATA[$F{course_id}]]></variableExpression>
+	</variable>
+	<variable name="course_code1" class="java.lang.Integer" resetType="Page" calculation="Count">
+		<variableExpression><![CDATA[$F{course_code}]]></variableExpression>
+	</variable>
+	<variable name="credit_amount1" class="java.lang.Integer" resetType="Page" calculation="Sum">
+		<variableExpression><![CDATA[$F{credit_amount}]]></variableExpression>
+	</variable>
+	<variable name="credit_amount2" class="java.math.BigDecimal" resetType="Page" calculation="Sum">
+		<variableExpression><![CDATA[$F{credit_amount}]]></variableExpression>
+	</variable>
+	<group name="memberId">
+		<groupExpression><![CDATA[1]]></groupExpression>
+		<groupFooter>
+			<band height="30">
+				<line>
+					<reportElement x="26" y="0" width="787" height="1" uuid="68b9c96f-e558-4d2a-89fe-c76397745a0d"/>
+					<graphicElement>
+						<pen lineWidth="1.0"/>
+					</graphicElement>
+				</line>
+				<textField>
+					<reportElement x="690" y="8" width="123" height="14" uuid="16fdcab3-dd80-40bf-b5bd-a8bd75e79264"/>
+					<textElement textAlignment="Right">
+						<font fontName="Sarabun Light" size="10"/>
+						<paragraph lineSpacing="Single"/>
+					</textElement>
+					<textFieldExpression><![CDATA[($P{lang}.equals( new String("th") )?"วันที่พิมพ์ : ":"Print Date : ") + ($P{dateFormat})]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="351" y="8" width="131" height="14" uuid="8e3dc2ab-fabe-4793-a10c-265008f7d25b"/>
+					<textElement textAlignment="Center">
+						<font fontName="Sarabun Light" size="10"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{lang}.equals( new String("th") )?"จบรายการแสดงผลการศึกษา":"End of Study Results List"]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band height="595">
+			<image>
+				<reportElement x="162" y="36" width="519" height="523" uuid="a675e335-05dd-47a2-a727-56fc4f1ba2eb"/>
+				<imageExpression><![CDATA[$P{background}]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="0" y="0" width="842" height="595" uuid="add25f7a-2514-4d29-8ed0-bdf6968e7e60"/>
+				<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0"/>
+				<imageExpression><![CDATA[$P{backgroundBorder}]]></imageExpression>
+			</image>
+		</band>
+	</background>
+	<pageHeader>
+		<band height="141">
+			<textField>
+				<reportElement style="logo" x="227" y="30" width="310" height="40" forecolor="#F72A42" uuid="b97ac7a5-9e95-41d6-afa2-0f8a51559113">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font fontName="Srinakharinwirot" size="26"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{lang}.equals( new String("th") )?"มหาวิทยาลัยศรีนครินทรวิโรฒ" :"Srinakharinwirot University"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="detail" x="26" y="107" width="264" height="22" uuid="0aa8bc8e-b02a-4985-8208-8c38d252dc97">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Sarabun Light" size="10" isBold="false"/>
+					<paragraph lineSpacing="Single" lineSpacingSize="1.0"/>
+				</textElement>
+				<textFieldExpression><![CDATA[($P{lang}.equals( new String("th") )?"ชื่อ-นามสกุล : ":"FirstName - LastName : ")+($P{lang}.equals( new String("th") )?$F{member_firstname_th}:$F{member_firstname_en})+"   "+($P{lang}.equals( new String("th") )?$F{member_lastname_th}:$F{member_lastname_en})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="detail" x="290" y="107" width="180" height="22" uuid="4a1d2a67-0870-44dc-969c-2dcaceaa0d4f"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Sarabun Light" size="10" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[($P{lang}.equals( new String("th") )?"อีเมล : ":"Account : ")+$F{member_email}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="detail" x="470" y="107" width="192" height="22" uuid="305d2531-1ebb-4e81-bad2-5c642dd599c7"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Sarabun Light" size="10" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[($P{lang}.equals( new String("th") )?"เลขประจำตัวผู้เรียน : ":"Learner ID : ")+($F{member_no})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="detail" x="725" y="107" width="88" height="22" uuid="bfb1672b-a832-4242-b7be-a63c17e4e2a8"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Sarabun Light" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[($P{lang}.equals( new String("th") )?"หน้า ":"Page ")+$V{PAGE_NUMBER} +($P{lang}.equals( new String("th") )?" จาก ":" of  ")+$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="logo" x="584" y="30" width="230" height="40" forecolor="#F72A42" uuid="80beb069-ac14-4a69-8f8e-d45fd334344b">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Bottom">
+					<font fontName="Srinakharinwirot" size="22"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{lang}.equals( new String("th") )?"ใบรายงานสะสมหน่วยกิต":"Virtual Transcript"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="227" y="67" width="310" height="30" uuid="e2bae3bf-43d8-4c3f-becd-86b9d9b2bc5b"/>
+				<textElement>
+					<font fontName="Sarabun"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{lang}.equals( new String("th") )?"114 สุขุมวิท 23, กรุงเทพฯ 10110, ประเทศไทย":"114 Sukhumvit 23, Bangkok 10110, Thailand"]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="27" y="20" width="200" height="84" uuid="3d5de346-2deb-48df-8b42-83e49bebe1de"/>
+				<box topPadding="15"/>
+				<imageExpression><![CDATA[$P{logo}]]></imageExpression>
+			</image>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="20">
+			<textField>
+				<reportElement style="header" x="26" y="-5" width="60" height="25" uuid="a7ef0409-2656-4393-9715-92b7670ab832">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ccb3a88a-1062-4305-b3fb-7136d7d049c2"/>
+				</reportElement>
+				<box topPadding="3" leftPadding="10" bottomPadding="1" rightPadding="1">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Middle" markup="none">
+					<font fontName="Sarabun Medium" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single" lineSpacingSize="3.0"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{lang}.equals( new String("th") )?"รหัสคอร์ส":"Course Code"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="header" x="86" y="-5" width="214" height="25" uuid="e7e5fb77-8f7e-490a-af13-88ed659cffc9">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="cdf7b0f3-d570-47e9-a92c-eae0cc2054ae"/>
+				</reportElement>
+				<box topPadding="3" bottomPadding="1" rightPadding="1">
+					<pen lineWidth="0.75"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle" markup="none">
+					<font fontName="Sarabun Medium" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single" lineSpacingSize="3.0"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{lang}.equals( new String("th") )?"ชื่อคอร์ส":"Course Name"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="header" x="760" y="-5" width="53" height="25" uuid="af8971ec-1827-4ee5-a1fe-134de85fb4cd">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="cc6c8ef7-68d5-4fbf-b48d-2481bc0fe082"/>
+				</reportElement>
+				<box topPadding="3" bottomPadding="1" rightPadding="1">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font fontName="Sarabun Medium" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single" lineSpacingSize="3.0"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{lang}.equals( new String("th") )?"ผลการเรียน":"Finals Grade"]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement stretchType="RelativeToBandHeight" x="812" y="-5" width="1" height="25" isPrintWhenDetailOverflows="true" uuid="c7ec1726-9e35-4d09-a502-9be436d197f5"/>
+				<graphicElement>
+					<pen lineWidth="1.0"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement style="header" x="300" y="-5" width="300" height="25" uuid="c7a0121a-8a18-4bfd-88db-9d2761afa935">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b58764af-8b50-464c-9381-dc0db6796930"/>
+				</reportElement>
+				<box topPadding="3" bottomPadding="1" rightPadding="1">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle" markup="none">
+					<font fontName="Sarabun Medium" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single" lineSpacingSize="3.0"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{lang}.equals( new String("th") )?"เทียบเคียงวิชา":"Curriculum Mapping"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="header" x="600" y="-5" width="50" height="25" uuid="28647b0e-dea2-484c-96b1-efc6e3188409">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b58764af-8b50-464c-9381-dc0db6796930"/>
+				</reportElement>
+				<box topPadding="3" bottomPadding="1" rightPadding="1">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font fontName="Sarabun Medium" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single" lineSpacingSize="3.0"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{lang}.equals( new String("th") )?"วันที่เริ่มเรียน":"Class start date"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="header" x="650" y="-5" width="50" height="25" uuid="982fe4a6-e3e9-48c3-979d-e3ef38cf1afd">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b58764af-8b50-464c-9381-dc0db6796930"/>
+				</reportElement>
+				<box topPadding="3" bottomPadding="1" rightPadding="1">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font fontName="Sarabun Medium" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single" lineSpacingSize="3.0"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{lang}.equals( new String("th") )?"วันที่เรียนจบ":"Class end date"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="header" x="700" y="-5" width="60" height="25" uuid="299168f2-337c-4f04-b64c-e27f93fd90f3">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b58764af-8b50-464c-9381-dc0db6796930"/>
+				</reportElement>
+				<box topPadding="3" bottomPadding="1" rightPadding="1">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font fontName="Sarabun Medium" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single" lineSpacingSize="3.0"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{lang}.equals( new String("th") )?"สะสมหน่วยกิต":"Number of Credit"]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement stretchType="ElementGroupHeight" x="26" y="-5" width="1" height="25" uuid="a48cf669-f55e-46b5-bce9-962267dd4f5d">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="1.0"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="26" splitType="Immediate">
+			<line>
+				<reportElement stretchType="ElementGroupHeight" x="26" y="0" width="1" height="26" uuid="dd57d17d-c61c-44d9-bb1f-1e9318f94a74">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="1.0"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement stretchType="RelativeToBandHeight" x="812" y="0" width="1" height="26" isPrintWhenDetailOverflows="true" uuid="c65dc9d5-4019-49ef-b789-d64db3c652da"/>
+				<graphicElement>
+					<pen lineWidth="1.0"/>
+				</graphicElement>
+			</line>
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+				<reportElement style="detail" stretchType="RelativeToBandHeight" x="26" y="0" width="60" height="26" isPrintWhenDetailOverflows="true" uuid="801d6dd5-b691-41b4-89f8-009682351eb2">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="1d573c15-9632-4908-b175-bae82a41a6d8"/>
+				</reportElement>
+				<box topPadding="10" leftPadding="10" bottomPadding="10" rightPadding="2"/>
+				<textFieldExpression><![CDATA[$F{course_code}]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+				<reportElement style="detail" stretchType="RelativeToTallestObject" x="86" y="0" width="214" height="26" isPrintWhenDetailOverflows="true" uuid="aa3f6f09-c6be-48b9-a1a2-bdd9861e7a59">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ae430584-1046-41f6-8d82-57539e1d1be8"/>
+				</reportElement>
+				<box topPadding="10" leftPadding="3" bottomPadding="10"/>
+				<textFieldExpression><![CDATA[$P{lang}.equals( new String("th") )?$F{course_name_th}:$F{course_name_en}]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+				<reportElement style="detail" stretchType="RelativeToTallestObject" x="300" y="0" width="300" height="26" isPrintWhenDetailOverflows="true" uuid="7367cacd-6a52-4f55-b03d-7143ab30a60a">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ae430584-1046-41f6-8d82-57539e1d1be8"/>
+				</reportElement>
+				<box topPadding="10" leftPadding="3" bottomPadding="10"/>
+				<textFieldExpression><![CDATA[$P{lang}.equals( new String("th") )?$F{subject_code_th}:$F{subject_code_en}]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+				<reportElement style="detail" stretchType="RelativeToTallestObject" x="600" y="0" width="50" height="26" isPrintWhenDetailOverflows="true" uuid="cfcb4d97-61e3-4726-8818-e5fd23aad889">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ae430584-1046-41f6-8d82-57539e1d1be8"/>
+				</reportElement>
+				<box topPadding="10" leftPadding="3" bottomPadding="10"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$P{startDate}]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+				<reportElement style="detail" stretchType="RelativeToTallestObject" x="650" y="0" width="50" height="26" isPrintWhenDetailOverflows="true" uuid="db3cb8c7-00b2-467e-9711-dd9fdc135898">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ae430584-1046-41f6-8d82-57539e1d1be8"/>
+				</reportElement>
+				<box topPadding="10" leftPadding="3" bottomPadding="10"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$P{passDate}]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+				<reportElement style="detail" stretchType="RelativeToTallestObject" x="700" y="0" width="60" height="26" isPrintWhenDetailOverflows="true" uuid="4dcdd730-b8c9-42da-a2a7-82366db429c0">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ae430584-1046-41f6-8d82-57539e1d1be8"/>
+				</reportElement>
+				<box topPadding="10" leftPadding="3" bottomPadding="10"/>
+				<textElement textAlignment="Center" verticalAlignment="Top"/>
+				<textFieldExpression><![CDATA[$F{credit_amount}]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+				<reportElement style="detail" stretchType="RelativeToTallestObject" x="780" y="0" width="33" height="26" isPrintWhenDetailOverflows="true" uuid="7d6c5b2e-20bc-40ab-b1b7-cce78b412b18">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ae430584-1046-41f6-8d82-57539e1d1be8"/>
+				</reportElement>
+				<box topPadding="10" leftPadding="3" bottomPadding="10"/>
+				<textElement textAlignment="Left" verticalAlignment="Top"/>
+				<textFieldExpression><![CDATA[$F{result_grade}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="123">
+			<line>
+				<reportElement x="190" y="92" width="429" height="1" uuid="d4df8a00-0597-4c5e-93e3-01246fffe933"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="191" y="61" width="428" height="1" uuid="9b51e172-3107-4ed5-85aa-d24c92d61af6"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement stretchType="RelativeToBandHeight" x="190" y="61" width="1" height="31" isPrintWhenDetailOverflows="true" uuid="e377b1a3-4080-48fb-a7e6-7a115409a8ea"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement stretchType="RelativeToBandHeight" x="310" y="61" width="1" height="31" isPrintWhenDetailOverflows="true" uuid="821b9cf0-0cb1-41c2-bbcd-33c1802dc01f"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement stretchType="RelativeToBandHeight" x="480" y="61" width="1" height="31" isPrintWhenDetailOverflows="true" uuid="6ce91921-7294-4a6d-8145-e44271ff66f6"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement stretchType="RelativeToBandHeight" x="619" y="61" width="1" height="31" isPrintWhenDetailOverflows="true" uuid="87642593-ef6d-41fa-a924-8837817e8ad2"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement x="201" y="70" width="100" height="14" uuid="17770291-cf17-434d-b84c-9122b8095dfb"/>
+				<textElement textAlignment="Center">
+					<font fontName="Sarabun Light" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[($P{lang}.equals( new String("th") )?"คอร์สเรียนทั้งหมด : ":"Course : ")+($V{course_code1})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="320" y="70" width="150" height="14" uuid="7d7961b4-ef9e-4726-8a22-b9145980062d"/>
+				<textElement textAlignment="Center">
+					<font fontName="Sarabun Light" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[($P{lang}.equals( new String("th") )?"เทียบเคียงรายวิชา : ":"Curriculum Mapping  : ")+($V{credit_amount2}.intValue())]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="495" y="70" width="110" height="14" uuid="f24e7842-273b-48b4-8438-0b348c77fb6c"/>
+				<textElement textAlignment="Center">
+					<font fontName="Sarabun Light" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[($P{lang}.equals( new String("th") )?"สะสมหน่วยกิต : ":"Credit : ")+(($F{credit_bank}!= null) ? $F{credit_bank} .toString() : "0")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="655" y="62" width="152" height="14" uuid="b9eff66c-7a65-4706-ac7d-ec4e0d5359d0"/>
+				<textElement textAlignment="Center">
+					<font fontName="Sarabun Light" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{lang}.equals( new String("th") )?"รองศาสตราจารย์ ดร.มนตรี มีสุข" :"Assoc. Prof. Dr.  Montree Meesuk"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="655" y="77" width="152" height="14" uuid="e1c54ca7-a624-416e-85a9-87805c07ee8a"/>
+				<textElement textAlignment="Center">
+					<font fontName="Sarabun Light" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{lang}.equals( new String("th") )?"คณบดีบัณฑิตวิทยาลัย" :"Dean of Graduate School"]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="650" y="9" width="161" height="50" uuid="0735eb87-a65b-4f37-adcd-c4f189607146"/>
+				<imageExpression><![CDATA[$P{signatureImg}]]></imageExpression>
+			</image>
+			<componentElement>
+				<reportElement x="27" y="3" width="98" height="89" uuid="d4747787-8543-47e9-abc1-af8d6acffb10"/>
+				<jr:QRCode xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<jr:codeExpression><![CDATA[$P{qrcode}]]></jr:codeExpression>
+				</jr:QRCode>
+			</componentElement>
+			<rectangle>
+				<reportElement x="27" y="2" width="141" height="90" uuid="f01a8c20-07bf-4fd5-be85-c6a389c11fe3"/>
+				<graphicElement>
+					<pen lineWidth="0.0"/>
+				</graphicElement>
+			</rectangle>
+		</band>
+	</pageFooter>
+	<noData>
+		<band height="50">
+			<staticText>
+				<reportElement style="logo" x="340" y="5" width="230" height="40" forecolor="#F72A42" uuid="8835e47f-28ef-4307-a920-6b234e62f484">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font fontName="Srinakharinwirot" size="26"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Data not found.]]></text>
+			</staticText>
+		</band>
+	</noData>
+</jasperReport>

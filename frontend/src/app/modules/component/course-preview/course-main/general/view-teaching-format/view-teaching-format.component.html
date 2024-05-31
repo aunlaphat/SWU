@@ -1,0 +1,81 @@
+<div class="card" *ngIf="initForm && courseMain">
+    <div class="p-fluid m-0 mb-4">
+        <h2>
+            {{ courseMain.courseCode }}&nbsp;&colon;&nbsp;{{ lang === 'th' ? courseMain.courseNameTh : courseMain.courseNameEn }}
+        </h2>
+    </div>
+    <div class="p-fluid m-0 mb-4" >
+        <header class=" ">
+            <h5 class="text-primary">{{ 'courseManagement.tabGeneral.tabTeachingInformation.name' | translate  }}</h5>
+            <p-divider type="solid"></p-divider>
+        </header>
+        <!-- รูปแบบการเรียนการสอน -->
+        <div class="col-12 flex pb-0 pt-0">
+            <div class="col-3 font-bold">
+                {{ 'courseManagement.tabGeneral.tabTeachingInformation.criteria.teachingMetodology' | translate }}
+            </div>
+            <div class="col-9">
+                {{ lang === 'th' ? courseMain.courseFormatTh : courseMain.courseFormatEn }}
+            </div>
+        </div>
+        <!-- รายละเอียดรูปแบบการสอนเพิ่มเติม (ภาษาไทย) -->
+        <div class="col-12 flex pb-0 pt-0">
+            <div class="col-3 font-bold">
+                {{ 'courseManagement.tabGeneral.tabTeachingInformation.criteria.teachingDescriptionTh' | translate }}
+            </div>
+            <div class="col-9">
+                {{ courseMain.courseFormatDescTh }}
+            </div>
+        </div>
+        <!-- รายละเอียดรูปแบบการสอนเพิ่มเติม (ภาษาอังกฤษ)-->
+        <div class="col-12 flex pb-0 pt-0">
+            <div class="col-3 font-bold">
+                {{ 'courseManagement.tabGeneral.tabTeachingInformation.criteria.teachingDescriptionEn' | translate }}
+            </div>
+            <div class="col-9">
+                {{ courseMain.courseFormatDescEn }}
+            </div>
+        </div>
+        <!--รวมจำนวนชั่วโมงเรียน -->
+        <div class="col-12 flex pb-0 pt-0">
+            <div class="col-3 font-bold">
+                {{ 'courseManagement.tabGeneral.tabTeachingInformation.criteria.totalClassHours' | translate}}
+            </div>
+            <div class="col-9">
+                {{ courseMain.courseTotalH }} {{'courseManagement.tabGeneral.tabTeachingInformation.criteria.totalHours.hours'| translate}} &nbsp; ({{'courseManagement.tabGeneral.tabTeachingInformation.criteria.totalHours.theory'| translate}} {{ courseMain.courseTheoryH }} {{'courseManagement.tabGeneral.tabTeachingInformation.criteria.totalHours.hours'| translate}},&nbsp; {{'courseManagement.tabGeneral.tabTeachingInformation.criteria.totalHours.practice'| translate}} {{ courseMain.courseActionH }} {{'courseManagement.tabGeneral.tabTeachingInformation.criteria.totalHours.hours'| translate}})
+            </div>
+        </div>
+        <!--ระยะเวลาเรียนตลอดหลักสูตรอบรมระยะสั้น -->
+        <div class="col-12 flex pb-0 pt-0">
+            <div class="col-3 font-bold">
+                {{ 'courseManagement.tabGeneral.tabTeachingInformation.criteria.coursePeriod' | translate }}
+            </div>
+            <div class="col-9">
+                {{ courseMain.courseDurationTime }}&nbsp; {{ lang === 'th' ? courseMain.durationTimeUnitTh : courseMain.durationTimeUnitEn }}
+            </div>
+        </div>
+
+        <header class=" mt-5">
+            <h5 class="text-primary">{{ 'courseManagement.tabGeneral.tabTeachingInformation.criteria.grade.name' | translate}}</h5>
+            <p-divider type="solid"></p-divider>
+        </header>
+        <!-- รูปแบบผลการเรียน -->
+        <div class="col-12 flex pb-0 pt-0">
+            <div class="col-3 font-bold">
+                {{ 'courseManagement.tabGeneral.tabTeachingInformation.criteria.grade.gradeFormat.name' | translate}}
+            </div>
+            <div class="col-9">
+                {{ lang === 'th' ? courseMain.gradeFormatTh : courseMain.gradeFormatEn }}
+            </div>
+        </div>
+        <!--จำนวนหน่วยกิต -->
+        <div class="col-12 flex pb-0 pt-0">
+            <div class="col-3 font-bold">
+                {{ 'courseManagement.tabGeneral.tabTeachingInformation.criteria.grade.numOfCredits' | translate}}
+            </div>
+            <div class="col-9">
+                {{ courseMain.creditAmount }}
+            </div>
+        </div>
+    </div>
+</div>

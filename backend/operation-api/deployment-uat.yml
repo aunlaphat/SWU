@@ -1,0 +1,114 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name:  operation-api
+  namespace: default
+  labels:
+    app:  operation-api
+spec:
+  selector:
+    matchLabels:
+      app: operation-api
+  replicas: 1
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app:  operation-api
+    spec:
+      # initContainers:
+        # Init containers are exactly like regular containers, except:
+          # - Init containers always run to completion.
+          # - Each init container must complete successfully before the next one starts.
+      imagePullSecrets:
+      - name: private-swu-registry-pull-secret
+      containers:
+      - name:  operation-api
+        image:  hubcpa.swu.ac.th:30005/lifelong-operation-api:0.0.1-beta.2-alpha.17
+        imagePullPolicy: Always
+        # resources:
+        #   requests:
+        #     cpu: 100m
+        #     memory: 100Mi
+        #   limits:
+        #     cpu: 100m
+        #     memory: 100Mi
+        # livenessProbe:
+        #   tcpSocket:
+        #     port: 80
+        #   initialDelaySeconds: 5
+        #   timeoutSeconds: 5
+        #   successThreshold: 1
+        #   failureThreshold: 3
+        #   periodSeconds: 10
+        # readinessProbe:
+        #   httpGet:
+        #     path: /_status/healthz
+        #     port: 80
+        #   initialDelaySeconds: 5
+        #   timeoutSeconds: 2
+        #   successThreshold: 1
+        #   failureThreshold: 3
+        #   periodSeconds: 10
+        env:
+        - name: spring.jpa.hibernate.ddl-auto
+          value: update
+        - name: spring.datasource.url
+          value: "jdbc:postgresql://postgresdb-uat:5432/swuuat"
+        - name: spring.datasource.username
+          value: "uatuser"
+        - name: spring.datasource.password
+          value: "uatpassword"
+        - name: activemq.broker.url
+          value: tcp://activemq:61616
+        - name: java.awt.headless
+          value: "true"
+        - name: default.path
+          value: /var/www/repo/application
+        - name: logging.file.name
+          value: /var/www/repo/application/logs/operationapi.log
+        - name: app.config.moodle.url
+          value: https://course.lifelong.swu.ac.th/webservice/rest/server.php
+        - name: security.ldap.url
+          value: ldap://ldap.swu.ac.th:389
+        - name: security.ldap.base
+          value: dc=swu,dc=ac,dc=th
+        - name: spring.datasource.hikari.maximum-pool-size
+          value: "50"
+        ports:
+        - containerPort:  28080
+          name:  operation-api
+        volumeMounts:
+        - name: localtime
+          mountPath: /etc/localtime
+        - name: application
+          mountPath: /var/www/repo
+      volumes:
+        - name: localtime
+          hostPath:
+            path: /usr/share/zoneinfo/Asia/Bangkok
+        - name: application
+          hostPath:
+            path: /var/www/repo/application
+          # persistentVolumeClaim:
+          #   claimName: application-persistent-volume-claim
+      restartPolicy: Always      
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: np-lifelong-operation-api
+  namespace: default
+spec:
+  type: NodePort
+  selector:
+    app: operation-api
+  ports:
+  - port: 28080
+    targetPort: 28080
+    nodePort: 30104
+---

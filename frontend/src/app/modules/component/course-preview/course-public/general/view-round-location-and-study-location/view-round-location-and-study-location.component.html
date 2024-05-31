@@ -1,0 +1,53 @@
+<div class="card" *ngIf="initForm && coursepublicMain">
+    <div class="p-fluid m-0 mb-4">
+        <h2>
+            {{ coursepublicMain.courseCode }}&nbsp;-&nbsp;{{
+                lang === 'th' ? coursepublicMain.publicNameTh : coursepublicMain.publicNameEn
+            }}
+        </h2>
+    </div>
+    <div class="p-fluid m-0 mb-4">
+        <header class=" ">
+            <h5 class="text-primary">
+                {{ 'courseManagement.tabRoundGeneral.tabLocationAndStudy.timeAndPlace' | translate }}
+            </h5>
+            <p-divider type="solid"></p-divider>
+        </header>
+        <!-- รูปแบบการเรียนการสอน -->
+        <div class="col-12 flex pb-0 pt-0">
+            <div class="col-3 font-bold">
+                {{ 'courseManagement.tabRoundGeneral.tabLocationAndStudy.teachingConcept' | translate }}
+            </div>
+            <div class="col-9" *ngFor="let item of lookupTeachingConceptList">
+                {{ lang === 'th' ? item.nameTh : item.nameEn }}
+            </div>
+        </div>
+        <!-- รายละเอียดรูปแบบการสอนเพิ่มเติม (ภาษาไทย) -->
+        <div class="col-12 flex pb-0 pt-0">
+            <div class="col-3 font-bold">
+                {{ 'courseManagement.roundApproval.timeAndPlace.courseFormatDescTh' | translate }}
+            </div>
+            <div class="col-9">
+                {{ coursepublicMain.courseFormatDescTh }}
+            </div>
+        </div>
+        <!-- รายละเอียดรูปแบบการสอนเพิ่มเติม (ภาษาอังกฤษ) -->
+        <div class="col-12 flex pb-0 pt-0">
+            <div class="col-3 font-bold">
+                {{ 'courseManagement.roundApproval.timeAndPlace.courseFormatDescEn' | translate }}
+            </div>
+            <div class="col-9">
+                {{ coursepublicMain.courseFormatDescEn }}
+            </div>
+        </div>
+        <!-- เวลาเรียน -->
+        <div class="col-12 flex pb-0 pt-0">
+            <div class="col-3 font-bold">
+                {{ 'courseManagement.roundApproval.timeAndPlace.courseTime' | translate }}
+            </div>
+            <div class="col-9">
+                {{ lang === 'th' ? coursepublicMain.courseTimeTh : coursepublicMain.courseTimeEn }}
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.5.final using JasperReports Library version 6.0.0  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="course" pageWidth="418" pageHeight="595" orientation="Landscape" columnWidth="418" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="2" uuid="7347cccd-d3cf-4e89-b041-f85be41d7b10">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="SWU_DEV"/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<style name="header" fontName="Sarabun" fontSize="8">
+		<box topPadding="2" leftPadding="3">
+			<pen lineWidth="0.25"/>
+			<topPen lineWidth="0.5" lineStyle="Solid"/>
+			<leftPen lineWidth="0.0"/>
+			<bottomPen lineWidth="0.5"/>
+			<rightPen lineWidth="0.0" lineStyle="Solid"/>
+		</box>
+		<paragraph lineSpacing="Single"/>
+	</style>
+	<style name="Style1" radius="1" fontName="Sarabun" fontSize="8">
+		<box topPadding="3" leftPadding="3" rightPadding="2">
+			<bottomPen lineWidth="0.0"/>
+			<rightPen lineWidth="0.0"/>
+		</box>
+	</style>
+	<queryString language="SQL">
+		<![CDATA[select cm.course_code, cm.course_name_th ,cm.course_name_en , 'SWU123, SWU123, SWU123, SWU123, 999999999' as course_matching, now() as course_end_date, 1111 as course_hour_amt from course_main cm 
+limit 20]]>
+	</queryString>
+	<field name="course_code" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="course_code"/>
+		<property name="com.jaspersoft.studio.field.label" value="course_code"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="course_main"/>
+		<fieldDescription><![CDATA[รหัสหลักสูตร]]></fieldDescription>
+	</field>
+	<field name="course_name_th" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="course_name_th"/>
+		<property name="com.jaspersoft.studio.field.label" value="course_name_th"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="course_main"/>
+		<fieldDescription><![CDATA[ชื่อหลักสูตร (ภาษาไทย)]]></fieldDescription>
+	</field>
+	<field name="course_name_en" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="course_name_en"/>
+		<property name="com.jaspersoft.studio.field.label" value="course_name_en"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="course_main"/>
+		<fieldDescription><![CDATA[ชื่อหลักสูตร (ภาษาอังกฤษ)]]></fieldDescription>
+	</field>
+	<field name="course_matching" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="course_matching"/>
+		<property name="com.jaspersoft.studio.field.label" value="course_matching"/>
+	</field>
+	<field name="course_end_date" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.name" value="course_end_date"/>
+		<property name="com.jaspersoft.studio.field.label" value="course_end_date"/>
+	</field>
+	<field name="course_hour_amt" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="course_hour_amt"/>
+		<property name="com.jaspersoft.studio.field.label" value="course_hour_amt"/>
+	</field>
+	<background>
+		<band/>
+	</background>
+	<detail>
+		<band height="20">
+			<textField>
+				<reportElement style="Style1" stretchType="RelativeToBandHeight" x="0" y="0" width="60" height="20" isPrintWhenDetailOverflows="true" uuid="de4912a8-7392-4052-a57c-e639ee5a886f">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="9a8c63a4-0110-4191-92ee-b33a8d5a43db"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{course_code}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Style1" stretchType="RelativeToTallestObject" x="60" y="0" width="122" height="20" isPrintWhenDetailOverflows="true" uuid="37727743-5ea7-4e38-a3ef-d9a94e447a17">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="89503d3d-1595-4924-804e-40498164993e"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Sarabun Light" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{course_name_th}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Style1" stretchType="RelativeToBandHeight" x="182" y="0" width="92" height="20" isPrintWhenDetailOverflows="true" uuid="13db7c26-eed3-4435-a35b-5475d209bb86">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="95abef1e-cd71-4144-9001-702770d5703b"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{course_matching}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Style1" stretchType="RelativeToBandHeight" x="274" y="0" width="86" height="20" isPrintWhenDetailOverflows="true" uuid="90270ac4-bdd5-40d3-ae0c-55af1de7a66d">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="5542b5f4-e220-4d4b-91d1-27360b4e9cf4"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{course_end_date}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Style1" stretchType="RelativeToBandHeight" x="360" y="0" width="58" height="20" isPrintWhenDetailOverflows="true" uuid="7a7ce9a6-1415-4bc9-a61d-e123b8150ad5">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="32cd6aaa-382f-4e0a-84d3-8a23db3110b9"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{course_hour_amt}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

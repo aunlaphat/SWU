@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: activemq
+  namespace: default
+  labels:
+    app: activemq
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: activemq
+  template:
+    metadata:
+      labels:
+        app: activemq
+    spec:
+      containers:
+        - image: padmaraglaunchpad/activemq:latest
+          name: activemq
+          ports:
+            - containerPort: 8161
+              name: admin
+            - containerPort: 61616
+              name: broker
+            - containerPort: 5672
+              name: amqp
+            - containerPort: 61613
+              name: stomp
+            - containerPort: 1883
+              name: mqtt
+            - containerPort: 61614
+              name: websocket
+      # nodeSelector:
+      #   env: sit
+# ---
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   name: activemq
+#   namespace: default
+# spec:
+#   type: NodePort
+#   selector:
+#     app: activemq
+#   ports:
+#   - port: 8161
+#     targetPort: 8161
+#     nodePort: 30204

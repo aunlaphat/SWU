@@ -1,0 +1,192 @@
+<div class="card" *ngIf="initForm && coursepublicMain">
+    <div class="p-fluid m-0 mb-4">
+        <h2>
+            {{ coursepublicMain.courseCode }}&nbsp;-&nbsp;{{
+                lang === 'th' ? coursepublicMain.publicNameTh : coursepublicMain.publicNameEn
+            }}
+        </h2>
+    </div>
+    <div class="p-fluid m-0 mb-4">
+
+        <header class="mt-5">
+            <h5 class="text-primary">
+                {{ 'courseManagement.tabRoundGeneral.tabOpenCourseRound.openCourseRound' | translate }}
+            </h5>
+            <p-divider type="solid"></p-divider>
+        </header>
+        <!-- ชื่อรอบหลักสูตร (ภาษาไทย) -->
+        <div class="col-12 flex pb-0 pt-0">
+            <div class="col-3 font-bold">
+                {{ 'courseManagement.tabRoundGeneral.tabOpenCourseRound.nameCourseTh' | translate }}
+            </div>
+            <div class="col-9">
+                {{ coursepublicMain.publicNameTh }}
+            </div>
+        </div>
+        <!-- ชื่อรอบหลักสูตร (ภาษาอังกฤษ) -->
+        <div class="col-12 flex pb-0 pt-0">
+            <div class="col-3 font-bold">
+                {{ 'courseManagement.tabRoundGeneral.tabOpenCourseRound.nameCourseEn' | translate }}
+            </div>
+            <div class="col-9">
+                {{ coursepublicMain.publicNameEn }}
+            </div>
+        </div>
+        <!-- รูปแบบการเปิดหลักสูตร -->
+        <div class="col-12 flex pb-0 pt-0">
+            <div class="col-3 font-bold">
+                {{ 'courseManagement.roundApproval.roundOpen.publicFormat' | translate }}
+            </div>
+            <div class="col-9" *ngFor="let item of lookupEnrollmentFormatList">
+                {{ lang === 'th' ? item.nameTh : item.nameEn }}
+            </div>
+        </div>
+        <!-- รุ่น -->
+        <div class="col-12 flex pb-0 pt-0">
+            <div class="col-3 font-bold">
+                {{ 'courseManagement.tabRoundGeneral.tabOpenCourseRound.generation' | translate }}
+            </div>
+            <div class="col-9">
+                {{ coursepublicMain.courseGeneration }}
+            </div>
+        </div>
+        <!-- จำนวนที่เปิดรับ -->
+        <div class="col-12 flex pb-0 pt-0">
+            <div class="col-3 font-bold">
+                {{ 'courseManagement.tabRoundGeneral.tabOpenCourseRound.maximumApplicant' | translate }}
+            </div>
+            <div class="col-9">
+                {{ coursepublicMain.maxEnroll }}
+            </div>
+        </div>
+        <!-- เผยแพร่บนเว็บไซต์ -->
+        <div class="col-12 flex pb-0 pt-0">
+            <div class="col-3 font-bold">
+                {{ 'courseManagement.tabRoundGeneral.tabOpenCourseRound.publishStatus' | translate }}
+            </div>
+            <!-- <div class="col-9">
+                {{
+                    coursepublicMain.activeFlag
+                        ? ('common.status.active' | translate)
+                        : ('common.status.inActive' | translate)
+                }}
+            </div> -->
+            <div *ngIf="coursepublicMain.publicStatus" class="col-9">
+                {{ lang === 'th' ? 'เผยแพร่' : 'Publish' }}
+            </div>
+            <div *ngIf="!coursepublicMain.publicStatus" class="col-9">
+                {{ lang === 'th' ? 'ไม่เผยแพร่' : 'Unpublish' }}
+            </div>
+        </div>
+        <!-- วันที่เริ่มโปรโมทหลักสูตร -->
+        <div class="col-12 flex pb-0 pt-0">
+            <div class="col-3 font-bold">
+                {{ 'courseManagement.tabRoundGeneral.tabOpenCourseRound.publishDateStart' | translate }}
+            </div>
+            <div class="col-9">
+                <span>
+                    {{ coursepublicMain.coursePublicStart | formatdate : lang }}
+                </span>
+                <span *ngIf="coursepublicMain.publicFormat === 30007002">
+                    - {{ coursepublicMain.coursePublicEnd | formatdate : lang }}
+                </span>
+                <span *ngIf="coursepublicMain.publicFormat === 30007001">
+                     {{ 'courseManagement.tabRoundGeneral.tabOpenCourseRound.onwards' | translate }}
+                </span>
+
+            </div>
+        </div>
+        <!-- วันที่เริ่มเปิดรับสมัคร -->
+        <div class="col-12 flex pb-0 pt-0">
+            <div class="col-3 font-bold">
+                {{ 'courseManagement.tabRoundGeneral.tabOpenCourseRound.registrationDateStart' | translate }}
+            </div>
+            <div class="col-9">
+                <span>
+                    {{ coursepublicMain.courseRegisStart | formatdate : lang }}
+                </span>
+                <span *ngIf="coursepublicMain.publicFormat === 30007002">
+                    - {{ coursepublicMain.courseRegisEnd | formatdate : lang }}
+                </span>
+                <span *ngIf="coursepublicMain.publicFormat === 30007001">
+                    {{ 'courseManagement.tabRoundGeneral.tabOpenCourseRound.onwards' | translate }}
+               </span>
+            </div>
+        </div>
+        <!-- วันที่เริ่มเรียน -->
+        <div class="col-12 flex pb-0 pt-0">
+            <div class="col-3 font-bold">
+                {{ 'courseManagement.tabRoundGeneral.tabOpenCourseRound.classDateStart' | translate }}
+            </div>
+            <div class="col-9">
+                <span>
+                    {{ coursepublicMain.courseClassStart | formatdate : lang }}
+                </span>
+                <span *ngIf="coursepublicMain.publicFormat === 30007002">
+                    - {{ coursepublicMain.courseClassEnd | formatdate : lang }}
+                </span>
+                <span *ngIf="coursepublicMain.publicFormat === 30007001">
+                    {{ 'courseManagement.tabRoundGeneral.tabOpenCourseRound.onwards' | translate }}
+               </span>
+            </div>
+        </div>
+
+        <header class="mt-5">
+            <h5 class="text-primary">
+                {{ 'courseManagement.tabRoundGeneral.tabOpenCourseRound.openCourse' | translate }}
+            </h5>
+            <p-divider type="solid"></p-divider>
+        </header>
+        <!-- ให้บริการบัวศรีไอดี -->
+        <div class="col-12 flex pb-0 pt-0" *ngIf="coursepublicMain.publicFormat === 30007002">
+            <div class="col-3 font-bold">
+                {{ 'courseManagement.tabRoundGeneral.tabOpenCourseRound.providedBuasri' | translate }}
+            </div>
+            <div *ngIf="coursepublicMain.buasriStatus" class="col-9">
+                {{ lang === 'th' ? 'ใช่' : 'Yes' }}
+            </div>
+            <div *ngIf="!coursepublicMain.buasriStatus" class="col-9">
+                {{ lang === 'th' ? 'ไม่ใช่' : 'No' }}
+            </div>
+        </div>
+        <!-- Popular -->
+        <div class="col-12 flex pb-0 pt-0">
+            <div class="col-3 font-bold">
+                {{ 'courseManagement.tabRoundGeneral.tabOpenCourseRound.popular' | translate }}
+            </div>
+            <div *ngIf="coursepublicMain.popularStatus" class="col-9">
+                {{ lang === 'th' ? 'ใช่' : 'Yes' }}
+            </div>
+            <div *ngIf="!coursepublicMain.popularStatus" class="col-9">
+                {{ lang === 'th' ? 'ไม่ใช่' : 'No' }}
+            </div>
+        </div>
+        <!-- รูปแบบการให้ประกาศนียบัตร -->
+        <div class="col-12 flex pb-0 pt-0">
+            <div class="col-3 font-bold">
+                {{ 'courseManagement.tabRoundGeneral.tabOpenCourseRound.certificate' | translate }}
+            </div>
+            <div class="col-9">
+                {{ lang === 'th' ? certificateNameTh : certificateNameEn }}
+            </div>
+        </div>
+
+        <header class="mt-5">
+            <h5 class="text-primary">{{ 'courseManagement.tabRoundGeneral.tabOpenCourseRound.status' | translate }}</h5>
+            <p-divider type="solid"></p-divider>
+        </header>
+        <!-- สถานะการใช้งาน -->
+        <div class="col-12 flex pb-0 pt-0">
+            <div class="col-3 font-bold">
+                {{ 'courseManagement.tabRoundGeneral.tabOpenCourseRound.status' | translate }}
+            </div>
+            <div class="col-9">
+                {{
+                    coursepublicMain.activeFlag
+                        ? ('common.status.active' | translate)
+                        : ('common.status.inActive' | translate)
+                }}
+            </div>
+        </div>
+    </div>
+</div>

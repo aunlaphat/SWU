@@ -1,0 +1,274 @@
+<ngx-ui-loader></ngx-ui-loader>
+
+<p-panel *ngIf="mode === 'LIST' && initForm">
+    <ng-template pTemplate="header">
+        <p-breadcrumb
+            class="col-12 p-0"
+            [home]="{ icon: 'pi pi-home', routerLink: '/' }"
+            [model]="[
+                { label: 'common.module.financial' | translate, routerLink: '/financial-management/payment-list' },
+                {
+                    label: 'financeManagement.financeList.name' | translate,
+                    routerLink: '/financial-management/payment-list'
+                }
+            ]"
+        >
+        </p-breadcrumb>
+    </ng-template>
+
+    <div class="p-fluid mt-4 mr-4 ml-4">
+        <header class="d-flex justify-content-md-between">
+            <h3 style="color: var(--font-color-header)">{{ 'financeManagement.financeList.name' | translate }}</h3>
+            <hr style="border-top: 1px solid var(--font-color-header)" />
+        </header>
+    </div>
+
+    <div class="mt-4 mr-4 ml-4">
+        <p-accordion [activeIndex]="0">
+            <p-accordionTab [header]="'common.searchData' | translate">
+                <div class="container">
+                    <div class="formgrid grid ml-1">
+                        <div class="p-fluid formgrid grid col-12">
+                            <div class="field col-12 sm:col-12 md:col-6 lg:col-3">
+                                <label style="height: 25px">{{
+                                    'financeManagement.financeList.criteria.paymentDate' | translate
+                                }}</label>
+                                <p-calendar
+                                    [showIcon]="true"
+                                    inputId="paymentDate"
+                                    [(ngModel)]="criteria.receiptDateList"
+                                    [placeholder]="'common.pleaseSelect' | translate"
+                                    [hideOnDateTimeSelect]="true"
+                                    selectionMode="range"
+                                    appThaiCalendarRange
+                                    [lang]="lang"
+                                    [clickYear]="clickYear"
+                                    (onYearChange)="clickYear = true"
+                                    (onSelect)="clickYear = false"
+                                ></p-calendar>
+                            </div>
+                            <div class="field col-12 sm:col-12 md:col-6 lg:col-3">
+                                <label style="height: 25px">{{
+                                    'financeManagement.financeList.criteria.paymentType' | translate
+                                }}</label>
+                                <p-dropdown
+                                    [options]="paymentTypeList"
+                                    [(ngModel)]="criteria.paymentType"
+                                    [optionLabel]="lang === 'th' ? 'nameTh' : 'nameEn'"
+                                    optionValue="value"
+                                    [showClear]="true"
+                                    [placeholder]="'common.pleaseSelect' | translate"
+                                ></p-dropdown>
+                            </div>
+                            <div class="field col-12 sm:col-12 md:col-6 lg:col-3">
+                                <label style="height: 25px">{{
+                                    'financeManagement.financeList.criteria.course' | translate
+                                }}</label>
+                                <input
+                                    pInputText
+                                    type="text"
+                                    [(ngModel)]="criteria.publicNameTh"
+                                    (keyup.enter)="onSearch()"
+                                />
+                            </div>
+                            <div class="field col-12 sm:col-12 md:col-6 lg:col-3">
+                                <label style="height: 25px">{{
+                                    'financeManagement.financeList.criteria.student' | translate
+                                }}</label>
+                                <input
+                                    pInputText
+                                    type="text"
+                                    [(ngModel)]="criteria.memberFirstnameTh"
+                                    (keyup.enter)="onSearch()"
+                                />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex justify-content-center gap-2 mt-4">
+                        <div>
+                            <p-button
+                                [label]="'common.button.search' | translate"
+                                icon="pi pi-search"
+                                styleClass="p-button-primary p-button-sm"
+                                size="small"
+                                (click)="onSearch()"
+                            >
+                            </p-button>
+                        </div>
+                        <div>
+                            <p-button
+                                [label]="'common.button.clear' | translate"
+                                icon="pi pi-refresh"
+                                styleClass="p-button-secondary p-button-sm"
+                                size="small"
+                                (click)="onClear()"
+                            >
+                            </p-button>
+                        </div>
+                    </div>
+                </div>
+            </p-accordionTab>
+        </p-accordion>
+    </div>
+
+    <div class="flex-wrap m-4">
+        <div class="flex justify-content-between">
+            <div class="align-items-center">
+                <h5 class="mt-2 mb-0">{{ 'financeManagement.financeList.table.name' | translate }}</h5>
+            </div>
+            <p-button
+                [label]="'common.button.export' | translate"
+                icon="pi pi-download"
+                styleClass="p-button-success p-button-sm p-button-outlined"
+                size="small"
+                (click)="onExportExcel(criteria)"
+            ></p-button>
+        </div>
+        <hr />
+        <p-dialog header="Confirmation" [style]="{ width: '350px' }" [(visible)]="visible">
+            <div class="flex py-2 justify-content-left">
+                <span class="pi pi-exclamation-triangle"
+                    ><label class="ml-2">{{
+                        'financeManagement.financeList.alert.confirmCancelReceipt' | translate
+                    }}</label></span
+                >
+            </div>
+
+            <div class="flex py-2 justify-content-left">
+                <p-radioButton
+                    appendTo="body"
+                    name="cancelReceipt"
+                    value="1"
+                    [(ngModel)]="cancelReceiptChoice"
+                    inputId="cancelReceipt"
+                ></p-radioButton>
+                <label for="cancelReceipt" class="ml-2">{{
+                    'financeManagement.financeList.alert.cancelReceipt' | translate
+                }}</label>
+            </div>
+            <div class="flex py-2 justify-content-left">
+                <p-radioButton
+                    appendTo="body"
+                    name="cancelReceipt"
+                    value="2"
+                    [(ngModel)]="cancelReceiptChoice"
+                    inputId="cancelReceiptAndRegistration"
+                ></p-radioButton>
+                <label for="cancelReceiptAndRegistration" class="ml-2">{{
+                    'financeManagement.financeList.alert.cancelReceiptAndRegistration' | translate
+                }}</label>
+            </div>
+            <div class="flex py-2 justify-content-left">
+                <p-radioButton
+                    appendTo="body"
+                    name="cancelReceipt"
+                    value="3"
+                    [(ngModel)]="cancelReceiptChoice"
+                    inputId="cancelReceiptAndRegistrationRefund"
+                ></p-radioButton>
+                <label for="cancelReceiptAndRegistrationRefund" class="ml-2">{{
+                    'financeManagement.financeList.alert.cancelReceiptAndRegistrationRefund' | translate
+                }}</label>
+            </div>
+            <div class="flex justify-content-center gap-2 mt-4">
+                <div class="gap-1">
+                    <p-button label="No" styleClass="p-button-primary p-button-sm" size="small" (click)="onClose()">
+                    </p-button>
+                </div>
+                <div class="gap-1">
+                    <p-button
+                        label="Yes"
+                        styleClass="p-button-primary p-button-sm"
+                        size="small"
+                        (click)="onUpdateCancelReceipt($event, cancelReceiptChoice)"
+                    >
+                    </p-button>
+                </div>
+            </div>
+        </p-dialog>
+        <p-table
+            [(rows)]="rows"
+            [value]="items"
+            [totalRecords]="totalRecords"
+            [paginator]="true"
+            [rowHover]="true"
+            [lazy]="true"
+            [rows]="5"
+            [rowsPerPageOptions]="[5, 10, 20]"
+            [paginator]="true"
+            styleClass="p-datatable-striped"
+            [tableStyle]="{ 'min-width': '50rem' }"
+            (onPage)="onSearch($event)"
+            [showCurrentPageReport]="true"
+            [currentPageReportTemplate]="'common.table.pageMessage' | translate"
+        >
+            <ng-template pTemplate="header">
+                <tr>
+                    <th scope="col" class="text-center" style="width: 5%">
+                        {{ 'common.table.column.no' | translate }}
+                    </th>
+                    <th scope="col" style="width: 8%">
+                        {{ 'financeManagement.financeList.table.column.paymentDate' | translate }}
+                    </th>
+                    <th scope="col" style="width: 9%">
+                        {{ 'financeManagement.financeList.table.column.paymentType' | translate }}
+                    </th>
+                    <th scope="col" style="width: 20%">
+                        {{ 'financeManagement.financeList.table.column.course' | translate }}
+                    </th>
+                    <th scope="col" style="width: 12%">
+                        {{ 'financeManagement.financeList.table.column.student' | translate }}
+                    </th>
+                    <th scope="col" class="text-center" style="width: 10%">
+                        {{ 'financeManagement.financeList.table.column.amount' | translate }}
+                    </th>
+                    <th scope="col" style="width: 10%">
+                        {{ 'financeManagement.financeList.table.column.ref1' | translate }}
+                    </th>
+                    <th scope="col" style="width: 10%">
+                        {{ 'financeManagement.financeList.table.column.ref2' | translate }}
+                    </th>
+                    <th scope="col" class="text-center" style="width: 8%">
+                        {{ 'financeManagement.financeList.table.column.printReceipt' | translate }}
+                    </th>
+                    <!-- <th scope="col" class="text-center" style="width: 8%">
+                        {{ 'financeManagement.financeList.table.column.cancelReceipt' | translate }}
+                    </th> -->
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-item>
+                <tr>
+                    <td class="text-center">{{ item.rowNum }}</td>
+                    <td>{{ item.receiptDate | formatdatetime : lang }}</td>
+                    <td>{{ lang === 'th' ? item.paymentTypeTh : item.paymentTypeEn }}</td>
+                    <td>{{ item.courseCode }} - {{ lang === 'th' ? item.publicNameTh : item.publicNameEn }}</td>
+                    <td>
+                        {{ lang === 'th' ? item.memberFirstnameTh : item.memberFirstnameEn }}
+                        {{ lang === 'th' ? item.memberLastnameTh : item.memberLastnameEn }}
+                    </td>
+                    <td class="text-center">{{ item.paymentAmount | number : '.2' }}</td>
+                    <td>{{ item.ref1 }}</td>
+                    <td>{{ item.ref2 }}</td>
+                    <td class="text-center">
+                        <!-- <a  class="pi pi-file-pdf cursor-pointer" [href]="viewDocumnet(item)" target="_blank" *ngIf="item.receiptOriginalCaPath"></a> -->
+                        <a
+                            (click)="viewDocumnetAjax(item)"
+                            class="pi pi-file-pdf cursor-pointer"
+                            *ngIf="item.receiptOriginalCaPath || item.receiptCopyCaPath"
+                        ></a>
+                    </td>
+                    <!-- <td class="text-center">
+                        <a (click)="onDelete($event, item)" class="pi pi-times cursor-pointer"></a>
+                    </td> -->
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="emptymessage">
+                <tr>
+                    <td colspan="10" class="text-center">{{ 'common.dataNotFound' | translate }}</td>
+                </tr>
+            </ng-template>
+        </p-table>
+        <br /><br />
+    </div>
+</p-panel>

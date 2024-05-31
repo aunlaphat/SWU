@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fontFamilies>
+	<fontFamily name="Sarabun Set">
+		<normal><![CDATA[fonts/Sarabun-Bold.ttf]]></normal>
+		<bold><![CDATA[fonts/Sarabun-Bold.ttf]]></bold>
+		<italic><![CDATA[fonts/Sarabun-Italic.ttf]]></italic>
+		<boldItalic><![CDATA[fonts/Sarabun-BoldItalic.ttf]]></boldItalic>
+		<pdfEncoding><![CDATA[Identity-H]]></pdfEncoding>
+		<pdfEmbedded><![CDATA[true]]></pdfEmbedded>
+		<exportFonts/>
+	</fontFamily>
+	<fontFamily name="Sarabun Light">
+		<normal><![CDATA[fonts/Sarabun-Light.ttf]]></normal>
+		<bold></bold>
+		<italic><![CDATA[fonts/Sarabun-LightItalic.ttf]]></italic>
+		<pdfEncoding><![CDATA[Identity-H]]></pdfEncoding>
+		<pdfEmbedded><![CDATA[true]]></pdfEmbedded>
+		<exportFonts/>
+	</fontFamily>
+	<fontFamily name="Srinakharinwirot">
+		<normal><![CDATA[fonts/Srinakharinwirot-Regular.ttf]]></normal>
+		
+		<pdfEncoding><![CDATA[Identity-H]]></pdfEncoding>
+		<pdfEmbedded><![CDATA[true]]></pdfEmbedded>
+		<exportFonts/>
+	</fontFamily>	
+</fontFamilies>
